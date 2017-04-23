@@ -17,6 +17,14 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".WelcomeScreen"></activity>
+		<activity android:name=".Forms_V">
+		</activity>
+		<activity android:name=".SavedProjects_V">
+		</activity>
+		<activity android:name=".PastProjects_SM">
+		</activity>
+		<activity android:name=".AddProjects_SM">
+		</activity>
 	</application>
 
 </manifest>

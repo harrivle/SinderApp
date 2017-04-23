@@ -45,4 +45,21 @@
 		<item name="android:textSize">36sp</item>
 	</style>
 
+	<style name="MyToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+		<item name="android:textColorSecondary">@color/colorRed</item> 
+		<item name="android:textColorPrimary">@color/colorRed</item> 
+		<item name="android:actionBarItemBackground">@color/colorAccent</item>
+		<!--  <item name="android:textColorPrimary">@color/colorYellow</item>
+		  <item name="android:textColorSecondary">@color/colorYellow</item>
+		  <item name="android:actionBarItemBackground">@color/colorGreen</item> -->
+
+	</style>
+
+	<style name="MyPopupTheme" parent="ThemeOverlay.AppCompat.Light">
+		<item name="android:textColorPrimary">@color/colorOrange</item> 
+		<item name="android:actionBarItemBackground">@color/colorOrange</item>
+		<!--   <item name="android:textColorPrimary">@color/colorGreen</item>
+		   <item name="android:actionBarItemBackground">@color/colorWhite</item> -->
+	</style>
+
 </resources>

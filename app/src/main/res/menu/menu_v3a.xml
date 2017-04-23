@@ -1,0 +1,34 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/add_v3a"
+        android:icon="@drawable/ic_add_circle"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Add Form"/>
+
+    <item android:id="@+id/delete_v3a"
+        android:icon="@drawable/ic_delete"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:title="Delete"/>
+
+    <item android:id="@+id/edit_v3a"
+        android:icon="@drawable/ic_edit"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Edit"/>
+
+    <item android:id="@+id/returntowelcome_v3a"
+        android:icon="@drawable/ic_close"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Return To Main Menu"/>
+
+    <item android:id="@+id/close_v3a"
+        android:icon="@drawable/ic_close"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Close"/>
+
+</menu>

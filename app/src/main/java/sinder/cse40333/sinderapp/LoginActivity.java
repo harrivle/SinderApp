@@ -1,5 +1,6 @@
 package sinder.cse40333.sinderapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -194,6 +195,16 @@ public class LoginActivity extends BaseActivity implements
 		// [END send_email_verification]
 	}
 
+	private void goToForms() {
+		Intent intent = new Intent(this, Forms_V.class);
+		startActivity(intent);
+	}
+
+	private void goToProjects() {
+		Intent intent = new Intent(this, PastProjects_SM.class);
+		startActivity(intent);
+	}
+
 	private boolean validateForm() {
 		boolean valid = true;
 
@@ -249,6 +260,10 @@ public class LoginActivity extends BaseActivity implements
 			signOut();
 		} else if (i == R.id.verify_email_button) {
 			sendEmailVerification();
+		} else if (i == R.id.forms_button) {
+			goToForms();
+		} else if (i == R.id.projects_button) {
+			goToProjects();
 		}
 	}
 }
