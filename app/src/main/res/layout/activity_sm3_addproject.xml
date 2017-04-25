@@ -1,63 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/coordinatorlayout_sm2">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
-    <include android:id="@+id/toolbar_sm3" layout="@layout/toolbar_sm3"/>
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:id="@+id/coordinatorlayout_sm2">
 
-    <TextView
-        android:text="Name of Project"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:id="@+id/projName" />
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				  xmlns:app="http://schemas.android.com/apk/res-auto"
+				  android:orientation="vertical"
+				  android:layout_width="match_parent"
+				  android:layout_height="match_parent"
+				  android:weightSum="1">
 
-    <Button
-        android:text="Camera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:id="@+id/button" />
+		<include
+			android:id="@+id/toolbar_sm3"
+			layout="@layout/toolbar_sm3"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="114dp"
-        app:srcCompat="@drawable/leprechaun"
-        android:layout_gravity="center"
-        android:id="@+id/projPic"
-        android:layout_weight="0.19" />
+		<TextView
+			android:text="Name of Project"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="30sp"
+			android:textAlignment="center"
+			android:id="@+id/projName"/>
 
-    <TextView
-        android:text="Date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/date" />
+		<Button
+			android:text="Camera"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right"
+			android:id="@+id/button"/>
 
-    <TextView
-        android:text="Description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/discription" />
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="114dp"
+			app:srcCompat="@drawable/leprechaun"
+			android:layout_gravity="center"
+			android:id="@+id/projPic"
+			android:layout_weight="0.19"/>
 
-    <TextView
-        android:text="Contact Info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/contactInfo" />
+		<TextView
+			android:text="Date"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/date"/>
 
-    <TextView
-        android:text="Numbers of Volunteers needed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/numVol" />
+		<TextView
+			android:text="Description"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/discription"/>
 
-</LinearLayout>
+		<TextView
+			android:text="Contact Info"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/contactInfo"/>
+
+		<TextView
+			android:text="Numbers of Volunteers needed"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/numVol"/>
+
+	</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

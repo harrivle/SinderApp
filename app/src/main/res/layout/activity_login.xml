@@ -120,6 +120,7 @@
 				android:layout_height="wrap_content"
 				android:layout_weight="1.0"
 				android:text="Forms"
+				android:onClick="goToForms"
 				android:theme="@style/ThemeOverlay.MyDarkButton"/>
 
 			<Button
@@ -128,6 +129,7 @@
 				android:layout_height="wrap_content"
 				android:layout_weight="1.0"
 				android:text="Projects"
+				android:onClick="goToProjects"
 				android:theme="@style/ThemeOverlay.MyDarkButton"/>
 
 			<Button

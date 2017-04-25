@@ -195,13 +195,13 @@ public class LoginActivity extends BaseActivity implements
 		// [END send_email_verification]
 	}
 
-	private void goToForms() {
-		Intent intent = new Intent(this, Forms_V.class);
+	public void goToForms(View view) {
+		Intent intent = new Intent(LoginActivity.this, Forms_V.class);
 		startActivity(intent);
 	}
 
-	private void goToProjects() {
-		Intent intent = new Intent(this, PastProjects_SM.class);
+	public void goToProjects(View view) {
+		Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
 		startActivity(intent);
 	}
 
@@ -261,9 +261,9 @@ public class LoginActivity extends BaseActivity implements
 		} else if (i == R.id.verify_email_button) {
 			sendEmailVerification();
 		} else if (i == R.id.forms_button) {
-			goToForms();
+			goToForms(v);
 		} else if (i == R.id.projects_button) {
-			goToProjects();
+			goToProjects(v);
 		}
 	}
 }
