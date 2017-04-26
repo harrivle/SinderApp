@@ -4,17 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -23,10 +16,10 @@ import java.util.ArrayList;
  */
 
 public class PastProjects_SM extends AppCompatActivity {
-	/*FirebaseDatabase db = FirebaseDatabase.getInstance();
-	DatabaseReference ref = db.getReference("projects");*/
 	ProjectsAdapter projectsAdapter;
-	ArrayList<ArrayList<String>> projects = new ArrayList();
+	Object projects;
+
+
 
 	@Override
 	protected void onCreate(Bundle bundle) {
@@ -36,23 +29,19 @@ public class PastProjects_SM extends AppCompatActivity {
 		setSupportActionBar(my_tool_bar_sm2);
 		my_tool_bar_sm2.setTitle("Past Projects");
 
-		/*ref.child("projects").addValueEventListener(new ValueEventListener() {
-			@Override
-			public void onDataChange(DataSnapshot dataSnapshot) {
-				System.out.println(dataSnapshot.getValue());
+		projects = this.getIntent().getSerializableExtra("projects");
+		for (ArrayList<String> i : (ArrayList<ArrayList<String>>) projects) {
+			for (String j : i) {
+				System.out.println("THIS");
+				System.out.println(j);
 			}
+		}
 
-			@Override
-			public void onCancelled(DatabaseError databaseError) {
-				Log.w("Cancelled", "loadPost:onCancelled", databaseError.toException());
-			}
-		});*/
-
-		ArrayList<String> temp = new ArrayList();
+		/*ArrayList<String> temp = new ArrayList();
 		temp.add("Project 1");
 		temp.add("08/18/1995");
-		projects.add(temp);
-		projectsAdapter = new ProjectsAdapter(this, projects);
+		projects.add(temp);*/
+		projectsAdapter = new ProjectsAdapter(this, (ArrayList) projects);
 		ListView scheduleListView = (ListView) findViewById(R.id.projectsList);
 		scheduleListView.setAdapter(projectsAdapter);
 	}
