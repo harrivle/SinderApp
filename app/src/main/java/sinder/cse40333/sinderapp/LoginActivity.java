@@ -15,6 +15,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LoginActivity extends BaseActivity implements
 		View.OnClickListener {
@@ -25,6 +33,7 @@ public class LoginActivity extends BaseActivity implements
 	private TextView mDetailTextView;
 	private EditText mEmailField;
 	private EditText mPasswordField;
+	ArrayList<ArrayList<String>> projects = new ArrayList();
 
 	// [START declare_auth]
 	private FirebaseAuth mAuth;
@@ -50,6 +59,26 @@ public class LoginActivity extends BaseActivity implements
 		findViewById(R.id.email_create_account_button).setOnClickListener(this);
 		findViewById(R.id.sign_out_button).setOnClickListener(this);
 		findViewById(R.id.verify_email_button).setOnClickListener(this);
+
+		FirebaseDatabase db = FirebaseDatabase.getInstance();
+		DatabaseReference ref = db.getReference();
+
+		ref.child("projects").addValueEventListener(new ValueEventListener() {
+			@Override
+			public void onDataChange(DataSnapshot dataSnapshot) {
+				for (DataSnapshot firstSnapshot : dataSnapshot.getChildren()) {
+					ArrayList<String> temp = new ArrayList();
+					temp.add(((HashMap<String, String>) firstSnapshot.getValue()).get("projectName"));
+					temp.add(((HashMap<String, String>) firstSnapshot.getValue()).get("projectDate"));
+					projects.add(temp);
+				}
+			}
+
+			@Override
+			public void onCancelled(DatabaseError databaseError) {
+				Log.w("Cancelled", "loadPost:onCancelled", databaseError.toException());
+			}
+		});
 
 		// [START initialize_auth]
 		mAuth = FirebaseAuth.getInstance();
@@ -202,6 +231,7 @@ public class LoginActivity extends BaseActivity implements
 
 	public void goToProjects(View view) {
 		Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
+		intent.putExtra("projects", projects);
 		startActivity(intent);
 	}
 
