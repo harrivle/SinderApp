@@ -7,12 +7,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by apple on 3/28/17.
  */
 
 public class AddProjects_SM extends AppCompatActivity {
+	FirebaseDatabase db = FirebaseDatabase.getInstance();
+	DatabaseReference ref = db.getReference();
+
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
@@ -20,6 +28,20 @@ public class AddProjects_SM extends AppCompatActivity {
 		Toolbar my_tool_bar_sm3 = (Toolbar) findViewById(R.id.toolbar_sm3);
 		setSupportActionBar(my_tool_bar_sm3);
 		my_tool_bar_sm3.setTitle("Add Project");
+		Button createProjectButton = (Button) findViewById(R.id.createProjectButton);
+		createProjectButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				System.out.println("THAT");
+				writeNewDatabase("3", "05/18/2017", "Project 3");
+			}
+		});
+	}
+
+	public void writeNewDatabase(String ID, String date, String name) {
+		System.out.println(ID + date + name);
+		ref.child("projects").child(ID).child("projectDate").setValue(date);
+		ref.child("projects").child(ID).child("projectName").setValue(name);
 	}
 
 	@Override
