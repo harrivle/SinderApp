@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,9 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LoginActivity extends BaseActivity implements
-		View.OnClickListener {
-
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
+	int checked = 0;
 	private static final String TAG = "EmailPassword";
 
 	private TextView mStatusTextView;
@@ -282,18 +282,37 @@ public class LoginActivity extends BaseActivity implements
 	@Override
 	public void onClick(View v) {
 		int i = v.getId();
+
 		if (i == R.id.email_create_account_button) {
 			createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
 		} else if (i == R.id.email_sign_in_button) {
 			signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+			/*if(checked == 1) {
+				//go to PastProjects Activity!!
+				startActivity(new Intent(this, PastProjects_SM.class));
+			} else {
+				//go to Welcome Activity!!
+				startActivity(new Intent(this, Welcome.class));
+			}
+			*/
 		} else if (i == R.id.sign_out_button) {
 			signOut();
 		} else if (i == R.id.verify_email_button) {
 			sendEmailVerification();
 		} else if (i == R.id.forms_button) {
-			goToForms(v);
+			//if(checked == 0) {
+				goToForms(v);
+			//}
 		} else if (i == R.id.projects_button) {
-			goToProjects(v);
+			//if(checked == 0) {
+				goToProjects(v);
+			//}
+		}
+	}
+
+	public void itemClicked(View v) {
+		if(((CheckBox) v).isChecked()) {
+			checked = 1;
 		}
 	}
 }

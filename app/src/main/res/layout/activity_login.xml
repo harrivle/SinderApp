@@ -20,9 +20,9 @@
 			style="@style/ThemeOverlay.FirebaseIcon"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
+			android:layout_weight="0.54"
 			android:contentDescription="@string/desc_firebase_lockup"
-			android:src="@drawable/sinder_logo"
-			android:layout_weight="0.54"/>
+			android:src="@drawable/sinder_logo" />
 
 		<TextView
 			android:id="@+id/title_text"
@@ -30,17 +30,17 @@
 			android:layout_height="wrap_content"
 			android:layout_marginBottom="@dimen/title_bottom_margin"
 			android:text="@string/emailpassword_title_text"
-			android:theme="@style/ThemeOverlay.MyTitleText"/>
+			android:theme="@style/ThemeOverlay.MyTitleText" />
 
 		<TextView
 			android:id="@+id/status"
 			style="@style/ThemeOverlay.MyTextDetail"
-			android:text="@string/signed_out"/>
+			android:text="@string/signed_out" />
 
 		<TextView
 			android:id="@+id/detail"
 			style="@style/ThemeOverlay.MyTextDetail"
-			tools:text="Firebase User ID: 123456789abc"/>
+			tools:text="Firebase User ID: 123456789abc" />
 
 	</LinearLayout>
 
@@ -133,14 +133,6 @@
 				android:theme="@style/ThemeOverlay.MyDarkButton"/>
 
 			<Button
-				android:id="@+id/sign_out_button"
-				android:layout_width="0dp"
-				android:layout_height="wrap_content"
-				android:layout_weight="1.0"
-				android:text="@string/sign_out"
-				android:theme="@style/ThemeOverlay.MyDarkButton"/>
-
-			<Button
 				android:id="@+id/verify_email_button"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
@@ -151,5 +143,23 @@
 		</LinearLayout>
 
 	</RelativeLayout>
+
+	<Button
+		android:id="@+id/sign_out_button"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:text="@string/sign_out"
+		android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+	<CheckBox
+		android:id="@+id/checkBox"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:layout_marginLeft="100dp"
+		android:layout_marginRight="100dp"
+		android:onClick="itemClicked"
+		android:text="Service Moderator?"
+		android:textAlignment="viewStart" />
 
 </LinearLayout>
