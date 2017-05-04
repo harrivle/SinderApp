@@ -24,7 +24,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 public class LoginActivity extends BaseActivity {
 	private static final String TAG = "EmailPassword";
 	boolean checked = false;
