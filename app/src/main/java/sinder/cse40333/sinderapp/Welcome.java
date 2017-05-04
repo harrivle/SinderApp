@@ -8,14 +8,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 
 /**
- * Created by apple on 3/27/17.
+ * Created by apple on 5/3/17.
  */
 
-public class WelcomeScreen extends AppCompatActivity {
-
+public class Welcome extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
@@ -32,7 +32,7 @@ public class WelcomeScreen extends AppCompatActivity {
 			@Override
 			public void onClick(View view) {
 				//go to Forms_V Activity!
-				startActivity(new Intent(WelcomeScreen.this, Forms_V.class));
+				startActivity(new Intent(Welcome.this, Forms_V.class));
 			}
 		});
 
@@ -42,9 +42,23 @@ public class WelcomeScreen extends AppCompatActivity {
 			@Override
 			public void onClick(View view) {
 				//go to SavedProjects_V Activity!
-				startActivity(new Intent(WelcomeScreen.this, SavedProjects_V.class));
+				startActivity(new Intent(Welcome.this, SavedProjects_V.class));
 			}
 		});
+
+
+		//go to Welcome_Detail if one of the items is clicked:
+		AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
+			//  @Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent myintent = new Intent(Welcome.this, Welcome_Detail.class);
+				//  myintent.putExtra("team", teams.get(position));
+				//  System.out.println("" + teams.get(position).getTeamName());
+				startActivity(myintent);
+
+			}
+
+		};
 	}
 
 	// Menu/Toolbar
@@ -63,12 +77,10 @@ public class WelcomeScreen extends AppCompatActivity {
 			//??
 
 		} else if (res_id == R.id.logout_v2) {
-			startActivity(new Intent(this, LoginActivity.class));
+			startActivity(new Intent(Welcome.this, LoginActivity.class));
 		} else if (res_id == R.id.close_v2) {
 			//no code necessary here
 		}
 		return true;
 	}
-
-
 }
