@@ -27,7 +27,7 @@ import java.util.HashMap;
 
 public class LoginActivity extends BaseActivity {
 	private static final String TAG = "EmailPassword";
-	int checked = 0;
+	boolean checked = false;
 
 	private TextView mStatusTextView;
 	private TextView mDetailTextView;
@@ -88,12 +88,12 @@ public class LoginActivity extends BaseActivity {
 				if (user != null) {
 					// User is signed in
 					Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-					if (checked == 0) {
-						Intent intent = new Intent(LoginActivity.this, WelcomeScreen.class);
+					if (checked) {
+						Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
 						startActivity(intent);
 					}
 					else {
-						Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
+						Intent intent = new Intent(LoginActivity.this, Welcome.class);
 						startActivity(intent);
 					}
 				} else {
@@ -212,7 +212,10 @@ public class LoginActivity extends BaseActivity {
 
 	public void itemClicked(View v) {
 		if(((CheckBox) v).isChecked()) {
-			checked = 1;
+			checked = true;
+		}
+		else {
+			checked = false;
 		}
 	}
 }
