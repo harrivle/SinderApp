@@ -17,52 +17,130 @@
 			android:id="@+id/toolbar_sm3"
 			layout="@layout/toolbar_sm3"/>
 
-		<TextView
-			android:text="Name of Project"
+		<TableLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:text="Name of Project"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="20sp"
+					android:id="@+id/projName" />
+
+				<EditText
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:inputType="text"
+					android:ems="10"
+					android:id="@+id/editProjName" />
+			</TableRow>
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:text="Date"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="15sp"
+					android:id="@+id/date" />
+
+				<EditText
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:inputType="date"
+					android:ems="10"
+					android:id="@+id/editDate" />
+			</TableRow>
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:text="Description"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="15sp"
+					android:id="@+id/discription" />
+
+				<EditText
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:inputType="textMultiLine"
+					android:ems="10"
+					android:id="@+id/editDescrip" />
+			</TableRow>
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:text="Contact Info"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="15sp"
+					android:id="@+id/contactInfo" />
+
+				<EditText
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:inputType="textEmailAddress"
+					android:ems="10"
+					android:id="@+id/editConInfo" />
+			</TableRow>
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content" >
+
+				<TextView
+					android:text="Numbers of Volunteers needed"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:textSize="15sp"
+					android:id="@+id/numVol" />
+
+				<EditText
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:inputType="number"
+					android:ems="10"
+					android:id="@+id/editNumVol" />
+
+			</TableRow>
+		</TableLayout>
+
+		<android.support.design.widget.FloatingActionButton
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:textSize="30sp"
-			android:textAlignment="center"
-			android:id="@+id/projName"/>
-
-		<Button
-			android:text="Camera"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="right"
-			android:id="@+id/button"/>
+			android:clickable="true"
+			app:fabSize="mini"
+			app:srcCompat="@android:drawable/ic_input_add"
+			android:id="@+id/camera"
+			android:onClick="cameraClick"/>
 
 		<ImageView
 			android:layout_width="wrap_content"
-			android:layout_height="114dp"
+			android:layout_height="200dp"
 			app:srcCompat="@drawable/leprechaun"
 			android:layout_gravity="center"
 			android:id="@+id/projPic"
-			android:layout_weight="0.19"/>
+			android:layout_weight="0.19" />
 
-		<TextView
-			android:text="Date"
-			android:layout_width="match_parent"
+		<Button
+			android:text="Save"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:id="@+id/date"/>
-
-		<TextView
-			android:text="Description"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:id="@+id/discription"/>
-
-		<TextView
-			android:text="Contact Info"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:id="@+id/contactInfo"/>
-
-		<TextView
-			android:text="Numbers of Volunteers needed"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:id="@+id/numVol"/>
+			android:id="@+id/saveProj"
+			android:layout_gravity="center_horizontal" />
 
 	</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
