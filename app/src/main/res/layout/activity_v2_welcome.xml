@@ -1,47 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:id="@+id/coordinatorlayout">
 
 	<LinearLayout
-		android:orientation="vertical"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="match_parent"
+		android:orientation="vertical">
 
 		<include
 			android:id="@+id/toolbar_v2_welcome"
-			layout="@layout/toolbar_v2_welcome"/>
+			layout="@layout/toolbar_v2_welcome" />
 
 		<TextView
-			android:text="Welcome!"
+			android:id="@+id/textView"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:text="Welcome!"
 			android:textAlignment="center"
-			android:textSize="@dimen/title_font"
-			android:id="@+id/textView"/>
+			android:textSize="@dimen/title_font" />
 
 		<Button
-			android:text="Forms"
-			android:layout_height="wrap_content"
-			android:layout_width="@dimen/button_width"
 			android:id="@+id/button_forms"
-			android:layout_marginTop="250dp"
-			android:layout_marginBottom="50dp"
-			android:layout_marginRight="100dp"
-			android:layout_marginLeft="100dp"/>
+			android:layout_width="@dimen/button_width"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="120dp"
+			android:layout_marginTop="10dp"
+			android:layout_marginLeft="120dp"
+			android:layout_alignRight="@+id/button_forms"
+			android:text="Forms" />
 
 		<Button
-			android:text="Saved Projects"
-			android:layout_height="wrap_content"
-			android:layout_width="@dimen/button_width"
 			android:id="@+id/button_saved_projects"
+			android:layout_width="@dimen/button_width"
+			android:layout_height="wrap_content"
 
+			android:layout_marginBottom="0dp"
+			android:layout_marginRight="120dp"
+			android:layout_marginLeft="120dp"
 			android:layout_marginTop="0dp"
-			android:layout_marginBottom="50dp"
-			android:layout_marginRight="100dp"
-			android:layout_marginLeft="100dp"/>
+			android:text="Saved Projects" />
+
+		<TableLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:stretchColumns="2">
+
+			<TableRow>
+
+				<TextView
+					android:id="@+id/textView2"
+					android:layout_width="wrap_content"
+					android:layout_column="1"
+					android:gravity="center"
+					android:padding="3dip"
+					android:text="Project Name" />
+
+				<TextView
+					android:layout_column="3"
+					android:gravity="right"
+					android:padding="3dip"
+					android:text="Date" />
+			</TableRow>
+
+
+		</TableLayout>
+
+		<ListView
+			android:id="@+id/projectsList"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+
 
 	</LinearLayout>
+
+
 </android.support.design.widget.CoordinatorLayout>
