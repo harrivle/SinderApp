@@ -8,8 +8,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.AdapterView;
+
+import com.google.firebase.auth.FirebaseAuth;
 import android.widget.Button;
 
 /**
@@ -17,6 +18,9 @@ import android.widget.Button;
  */
 
 public class Welcome extends AppCompatActivity {
+	private FirebaseAuth mAuth;
+	private FirebaseAuth.AuthStateListener mAuthListener;
+
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
@@ -25,28 +29,6 @@ public class Welcome extends AppCompatActivity {
 		Toolbar my_tool_bar = (Toolbar) findViewById(R.id.toolbar_v2_welcome);
 		setSupportActionBar(my_tool_bar);
 		my_tool_bar.setTitle("Main Menu");
-
-
-		//Forms Button (transition to Forms_V Activity)
-		Button FormsButton = (Button) findViewById(R.id.button_forms);
-		FormsButton.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				//go to Forms_V Activity!
-				startActivity(new Intent(Welcome.this, Forms_V.class));
-			}
-		});
-
-		//Saved Projects Button (transition to SavedProjects_V Activity)
-		Button SavedProjects = (Button) findViewById(R.id.button_saved_projects);
-		SavedProjects.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				//go to SavedProjects_V Activity!
-				startActivity(new Intent(Welcome.this, SavedProjects_V.class));
-			}
-		});
-
 
 		//go to Welcome_Detail if one of the items is clicked:
 		AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
@@ -60,6 +42,21 @@ public class Welcome extends AppCompatActivity {
 			}
 
 		};
+
+		mAuth = FirebaseAuth.getInstance();
+		/*mAuthListener = new FirebaseAuth.AuthStateListener() {
+			@Override
+			public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+				FirebaseUser user = firebaseAuth.getCurrentUser();
+				if (user == null) {
+					// User is signed out
+					Log.d("LOGOUT", "onAuthStateChanged:signed_out");
+					Intent intent = new Intent(Welcome.this, LoginActivity.class);
+					startActivity(intent);
+				}
+			}
+		};
+		*/
 	}
 
 	// Menu/Toolbar
@@ -74,11 +71,14 @@ public class Welcome extends AppCompatActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int res_id = item.getItemId();
 
-		if (res_id == R.id.edit_profile_v2) {
-			//??
-
-		} else if (res_id == R.id.logout_v2) {
-			startActivity(new Intent(Welcome.this, LoginActivity.class));
+		if (res_id == R.id.forms_v2) {
+			startActivity(new Intent(Welcome.this, Forms_V.class));
+		} else if (res_id == R.id.saved_projects_v2) {
+			startActivity(new Intent(Welcome.this, SavedProjects_V.class));
+		}	else if (res_id == R.id.logout_v2) {
+			mAuth.signOut();
+			Intent intent = new Intent(Welcome.this, LoginActivity.class);
+			startActivity(intent);
 		} else if (res_id == R.id.close_v2) {
 			//no code necessary here
 		}

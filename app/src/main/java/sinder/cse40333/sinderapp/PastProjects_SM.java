@@ -19,8 +19,6 @@ public class PastProjects_SM extends AppCompatActivity {
 	ProjectsAdapter projectsAdapter;
 	Object projects;
 
-
-
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
