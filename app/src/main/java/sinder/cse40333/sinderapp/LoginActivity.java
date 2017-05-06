@@ -35,11 +35,6 @@ public class LoginActivity extends BaseActivity {
 	private EditText mPasswordField;
 	ArrayList<ArrayList<String>> projects = new ArrayList();
 
-	private FirebaseAuth mAuth;
-	private FirebaseAuth.AuthStateListener mAuthListener;
-	FirebaseDatabase db = FirebaseDatabase.getInstance();
-	DatabaseReference ref = db.getReference();
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -175,7 +170,7 @@ public class LoginActivity extends BaseActivity {
 
 						// [START_EXCLUDE]
 						if (!task.isSuccessful()) {
-							mStatusTextView.setText(R.string.auth_failed);
+							//mStatusTextView.setText(R.string.auth_failed);
 						}
 						hideProgressDialog();
 						// [END_EXCLUDE]
