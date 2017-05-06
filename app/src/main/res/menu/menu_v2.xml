@@ -2,22 +2,25 @@
 	  xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<item
-		android:id="@+id/edit_profile_v2"
-		android:icon="@drawable/ic_edit"
+		android:id="@+id/forms_v2"
 		android:orderInCategory="100"
 		app:showAsAction="never"
-		android:title="Edit Profile"/>
+		android:title="Forms"/>
+
+	<item
+		android:id="@+id/saved_projects_v2"
+		android:orderInCategory="100"
+		app:showAsAction="never"
+		android:title="Saved Projects"/>
 
 	<item
 		android:id="@+id/logout_v2"
-		android:icon="@drawable/ic_close"
 		android:orderInCategory="100"
 		app:showAsAction="never"
-		android:title="Log Out"/>
+		android:title="Logout"/>
 
 	<item
 		android:id="@+id/close_v2"
-		android:icon="@drawable/ic_close"
 		android:orderInCategory="100"
 		app:showAsAction="never"
 		android:title="Close"/>

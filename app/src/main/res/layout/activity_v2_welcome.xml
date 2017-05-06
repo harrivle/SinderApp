@@ -20,29 +20,9 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:text="Welcome!"
+			android:layout_marginBottom="25dp"
 			android:textAlignment="center"
 			android:textSize="@dimen/title_font" />
-
-		<Button
-			android:id="@+id/button_forms"
-			android:layout_width="@dimen/button_width"
-			android:layout_height="wrap_content"
-			android:layout_marginRight="120dp"
-			android:layout_marginTop="10dp"
-			android:layout_marginLeft="120dp"
-			android:layout_alignRight="@+id/button_forms"
-			android:text="Forms" />
-
-		<Button
-			android:id="@+id/button_saved_projects"
-			android:layout_width="@dimen/button_width"
-			android:layout_height="wrap_content"
-
-			android:layout_marginBottom="0dp"
-			android:layout_marginRight="120dp"
-			android:layout_marginLeft="120dp"
-			android:layout_marginTop="0dp"
-			android:text="Saved Projects" />
 
 		<TableLayout
 			android:layout_width="match_parent"
