@@ -4,13 +4,13 @@
 
 	<application
 		android:allowBackup="true"
-		android:icon="@mipmap/ic_launcher"
+		android:icon="@drawable/sinder_logo"
 		android:label="@string/app_name"
-		android:roundIcon="@mipmap/ic_launcher"
+		android:roundIcon="@drawable/sinder_logo"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
 		<activity
-			android:name=".LoginActivity"
+			android:name=".LaunchActivity"
 			android:label="@string/app_name">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
@@ -18,11 +18,15 @@
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
-		<activity android:name=".WelcomeScreen"></activity>
+		<activity android:name=".Welcome"></activity>
+		<activity android:name=".Welcome_Detail"></activity>
 		<activity android:name=".Forms_V"></activity>
 		<activity android:name=".SavedProjects_V"></activity>
 		<activity android:name=".PastProjects_SM"></activity>
 		<activity android:name=".AddProjects_SM"></activity>
+		<activity android:name = ".LoginActivity"></activity>
+		<activity android:name = ".Welcome"></activity>
+		<activity android:name = ".BaseActivity"></activity>
 	</application>
 
 </manifest>

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,11 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-public class LoginActivity extends BaseActivity implements
-		View.OnClickListener {
-
+public class LoginActivity extends BaseActivity {
 	private static final String TAG = "EmailPassword";
+	boolean checked = false;
 
 	private TextView mStatusTextView;
 	private TextView mDetailTextView;
@@ -35,13 +34,10 @@ public class LoginActivity extends BaseActivity implements
 	private EditText mPasswordField;
 	ArrayList<ArrayList<String>> projects = new ArrayList();
 
-	// [START declare_auth]
 	private FirebaseAuth mAuth;
-	// [END declare_auth]
-
-	// [START declare_auth_listener]
 	private FirebaseAuth.AuthStateListener mAuthListener;
-	// [END declare_auth_listener]
+	FirebaseDatabase db = FirebaseDatabase.getInstance();
+	DatabaseReference ref = db.getReference();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -49,19 +45,22 @@ public class LoginActivity extends BaseActivity implements
 		setContentView(R.layout.activity_login);
 
 		// Views
-		mStatusTextView = (TextView) findViewById(R.id.status);
-		mDetailTextView = (TextView) findViewById(R.id.detail);
-		mEmailField = (EditText) findViewById(R.id.field_email);
-		mPasswordField = (EditText) findViewById(R.id.field_password);
+		mEmailField = (EditText) findViewById(R.id.email);
+		mPasswordField = (EditText) findViewById(R.id.password);
 
 		// Buttons
-		findViewById(R.id.email_sign_in_button).setOnClickListener(this);
-		findViewById(R.id.email_create_account_button).setOnClickListener(this);
-		findViewById(R.id.sign_out_button).setOnClickListener(this);
-		findViewById(R.id.verify_email_button).setOnClickListener(this);
-
-		FirebaseDatabase db = FirebaseDatabase.getInstance();
-		DatabaseReference ref = db.getReference();
+		findViewById(R.id.email_sign_in_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+			}
+		});
+		findViewById(R.id.email_create_account_button).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
+			}
+		});
 
 		ref.child("projects").addValueEventListener(new ValueEventListener() {
 			@Override
@@ -80,11 +79,7 @@ public class LoginActivity extends BaseActivity implements
 			}
 		});
 
-		// [START initialize_auth]
 		mAuth = FirebaseAuth.getInstance();
-		// [END initialize_auth]
-
-		// [START auth_state_listener]
 		mAuthListener = new FirebaseAuth.AuthStateListener() {
 			@Override
 			public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -92,27 +87,28 @@ public class LoginActivity extends BaseActivity implements
 				if (user != null) {
 					// User is signed in
 					Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+					if (checked) {
+						Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
+						startActivity(intent);
+					}
+					else {
+						Intent intent = new Intent(LoginActivity.this, Welcome.class);
+						startActivity(intent);
+					}
 				} else {
 					// User is signed out
 					Log.d(TAG, "onAuthStateChanged:signed_out");
 				}
-				// [START_EXCLUDE]
-				updateUI(user);
-				// [END_EXCLUDE]
 			}
 		};
-		// [END auth_state_listener]
 	}
 
-	// [START on_start_add_listener]
 	@Override
 	public void onStart() {
 		super.onStart();
 		mAuth.addAuthStateListener(mAuthListener);
 	}
-	// [END on_start_add_listener]
 
-	// [START on_stop_remove_listener]
 	@Override
 	public void onStop() {
 		super.onStop();
@@ -120,7 +116,6 @@ public class LoginActivity extends BaseActivity implements
 			mAuth.removeAuthStateListener(mAuthListener);
 		}
 	}
-	// [END on_stop_remove_listener]
 
 	private void createAccount(String email, String password) {
 		Log.d(TAG, "createAccount:" + email);
@@ -190,49 +185,6 @@ public class LoginActivity extends BaseActivity implements
 
 	private void signOut() {
 		mAuth.signOut();
-		updateUI(null);
-	}
-
-	private void sendEmailVerification() {
-		// Disable button
-		findViewById(R.id.verify_email_button).setEnabled(false);
-
-		// Send verification email
-		// [START send_email_verification]
-		final FirebaseUser user = mAuth.getCurrentUser();
-		user.sendEmailVerification()
-				.addOnCompleteListener(this, new OnCompleteListener<Void>() {
-					@Override
-					public void onComplete(@NonNull Task<Void> task) {
-						// [START_EXCLUDE]
-						// Re-enable button
-						findViewById(R.id.verify_email_button).setEnabled(true);
-
-						if (task.isSuccessful()) {
-							Toast.makeText(LoginActivity.this,
-									"Verification email sent to " + user.getEmail(),
-									Toast.LENGTH_SHORT).show();
-						} else {
-							Log.e(TAG, "sendEmailVerification", task.getException());
-							Toast.makeText(LoginActivity.this,
-									"Failed to send verification email.",
-									Toast.LENGTH_SHORT).show();
-						}
-						// [END_EXCLUDE]
-					}
-				});
-		// [END send_email_verification]
-	}
-
-	public void goToForms(View view) {
-		Intent intent = new Intent(LoginActivity.this, Forms_V.class);
-		startActivity(intent);
-	}
-
-	public void goToProjects(View view) {
-		Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
-		intent.putExtra("projects", projects);
-		startActivity(intent);
 	}
 
 	private boolean validateForm() {
@@ -257,43 +209,12 @@ public class LoginActivity extends BaseActivity implements
 		return valid;
 	}
 
-	private void updateUI(FirebaseUser user) {
-		hideProgressDialog();
-		if (user != null) {
-			mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
-					user.getEmail(), user.isEmailVerified()));
-			mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
-
-			findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
-			findViewById(R.id.email_password_fields).setVisibility(View.GONE);
-			findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
-
-			findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
-		} else {
-			mStatusTextView.setText(R.string.signed_out);
-			mDetailTextView.setText(null);
-
-			findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
-			findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
-			findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
+	public void itemClicked(View v) {
+		if(((CheckBox) v).isChecked()) {
+			checked = true;
 		}
-	}
-
-	@Override
-	public void onClick(View v) {
-		int i = v.getId();
-		if (i == R.id.email_create_account_button) {
-			createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-		} else if (i == R.id.email_sign_in_button) {
-			signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-		} else if (i == R.id.sign_out_button) {
-			signOut();
-		} else if (i == R.id.verify_email_button) {
-			sendEmailVerification();
-		} else if (i == R.id.forms_button) {
-			goToForms(v);
-		} else if (i == R.id.projects_button) {
-			goToProjects(v);
+		else {
+			checked = false;
 		}
 	}
 }

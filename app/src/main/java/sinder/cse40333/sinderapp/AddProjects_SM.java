@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 /**
  * Created by apple on 3/28/17.
  */
@@ -27,6 +30,8 @@ public class AddProjects_SM extends AppCompatActivity {
 	String descrip;
 	String conInfo;
 	String numVol;
+	FirebaseDatabase db = FirebaseDatabase.getInstance();
+	DatabaseReference ref = db.getReference();
 
 	@Override
 	protected void onCreate(Bundle bundle) {
@@ -61,6 +66,20 @@ public class AddProjects_SM extends AppCompatActivity {
 			}
 
 		});
+		Button createProjectButton = (Button) findViewById(R.id.createProjectButton);
+		createProjectButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				System.out.println("THAT");
+				writeNewDatabase("3", "05/18/2017", "Project 3");
+			}
+		});
+	}
+
+	public void writeNewDatabase(String ID, String date, String name) {
+		System.out.println(ID + date + name);
+		ref.child("projects").child(ID).child("projectDate").setValue(date);
+		ref.child("projects").child(ID).child("projectName").setValue(name);
 	}
 
 	@Override

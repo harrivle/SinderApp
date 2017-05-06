@@ -36,4 +36,11 @@
 		app:showAsAction="never"
 		android:title="Close"/>
 
+	<item
+		android:id="@+id/share_v3a"
+		android:icon="@drawable/ic_email_black"
+		android:orderInCategory="100"
+		app:showAsAction="always"
+		android:title="Share"/>
+
 </menu>

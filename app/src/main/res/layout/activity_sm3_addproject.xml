@@ -142,5 +142,12 @@
 			android:id="@+id/saveProj"
 			android:layout_gravity="center_horizontal" />
 
+		<Button
+			android:id="@+id/createProjectButton"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="writeNewProject"
+			android:text="Create Project"/>
+
 	</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
