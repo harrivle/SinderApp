@@ -89,6 +89,7 @@ public class LoginActivity extends BaseActivity {
 					Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 					if (checked) {
 						Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
+						intent.putExtra("projects", projects);
 						startActivity(intent);
 					}
 					else {

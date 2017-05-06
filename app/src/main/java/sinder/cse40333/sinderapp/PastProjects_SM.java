@@ -40,7 +40,7 @@ public class PastProjects_SM extends AppCompatActivity {
 		/*ArrayList<String> temp = new ArrayList();
 		temp.add("Project 1");
 		temp.add("08/18/1995");
-		projects.add(temp);*/
+		projects = temp;*/
 		projectsAdapter = new ProjectsAdapter(this, (ArrayList) projects);
 		ListView scheduleListView = (ListView) findViewById(R.id.projectsList);
 		scheduleListView.setAdapter(projectsAdapter);
