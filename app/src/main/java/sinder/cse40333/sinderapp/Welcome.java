@@ -2,8 +2,10 @@ package sinder.cse40333.sinderapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import android.widget.Button;
 
 /**
@@ -44,7 +48,7 @@ public class Welcome extends AppCompatActivity {
 		};
 
 		mAuth = FirebaseAuth.getInstance();
-		/*mAuthListener = new FirebaseAuth.AuthStateListener() {
+		mAuthListener = new FirebaseAuth.AuthStateListener() {
 			@Override
 			public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 				FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -56,7 +60,6 @@ public class Welcome extends AppCompatActivity {
 				}
 			}
 		};
-		*/
 	}
 
 	// Menu/Toolbar
@@ -77,8 +80,8 @@ public class Welcome extends AppCompatActivity {
 			startActivity(new Intent(Welcome.this, SavedProjects_V.class));
 		}	else if (res_id == R.id.logout_v2) {
 			mAuth.signOut();
-			Intent intent = new Intent(Welcome.this, LoginActivity.class);
-			startActivity(intent);
+			/*Intent intent = new Intent(Welcome.this, LoginActivity.class);
+			startActivity(intent);*/
 		} else if (res_id == R.id.close_v2) {
 			//no code necessary here
 		}

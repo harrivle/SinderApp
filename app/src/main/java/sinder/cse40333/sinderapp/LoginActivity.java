@@ -27,6 +27,7 @@ import java.util.HashMap;
 public class LoginActivity extends BaseActivity {
 	private static final String TAG = "EmailPassword";
 	boolean checked = false;
+	boolean isSM;
 
 	private TextView mStatusTextView;
 	private TextView mDetailTextView;
@@ -80,25 +81,40 @@ public class LoginActivity extends BaseActivity {
 		});
 
 		mAuth = FirebaseAuth.getInstance();
+		FirebaseUser user = mAuth.getCurrentUser();
 		mAuthListener = new FirebaseAuth.AuthStateListener() {
 			@Override
 			public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 				FirebaseUser user = firebaseAuth.getCurrentUser();
+
 				if (user != null) {
 					// User is signed in
 					Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-					if (checked) {
-						Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
-						intent.putExtra("projects", projects);
-						startActivity(intent);
-					}
-					else {
-						Intent intent = new Intent(LoginActivity.this, Welcome.class);
-						startActivity(intent);
-					}
+					ref.child("users").child(mAuth.getCurrentUser().getUid()).child("isSM").addListenerForSingleValueEvent(new ValueEventListener() {
+						@Override
+						public void onDataChange(DataSnapshot dataSnapshot) {
+							isSM = (Boolean) dataSnapshot.getValue();
+							if (isSM) {
+								Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
+								intent.putExtra("projects", projects);
+								startActivity(intent);
+							}
+							else {
+								Intent intent = new Intent(LoginActivity.this, Welcome.class);
+								startActivity(intent);
+							}
+						}
+
+						@Override
+						public void onCancelled(DatabaseError databaseError) {
+							Log.w("Cancelled", "loadPost:onCancelled", databaseError.toException());
+						}
+					});
 				} else {
 					// User is signed out
 					Log.d(TAG, "onAuthStateChanged:signed_out");
+					Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+					startActivity(intent);
 				}
 			}
 		};
@@ -139,6 +155,10 @@ public class LoginActivity extends BaseActivity {
 						if (!task.isSuccessful()) {
 							Toast.makeText(LoginActivity.this, R.string.auth_failed,
 									Toast.LENGTH_SHORT).show();
+						}
+						else {
+							FirebaseUser currentUser = mAuth.getCurrentUser();
+							ref.child("use0rs").child(currentUser.getUid()).child("isSM").setValue(checked);
 						}
 
 						// [START_EXCLUDE]
