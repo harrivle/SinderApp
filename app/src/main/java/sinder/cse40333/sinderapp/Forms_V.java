@@ -13,7 +13,7 @@ import android.view.MenuItem;
  * Created by apple on 3/27/17.
  */
 
-public class Forms_V extends AppCompatActivity {
+public class Forms_V extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

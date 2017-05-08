@@ -18,8 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -28,20 +26,17 @@ public class LoginActivity extends BaseActivity {
 	private static final String TAG = "EmailPassword";
 	boolean checked = false;
 
-	private TextView mStatusTextView;
-	private TextView mDetailTextView;
 	private EditText mEmailField;
 	private EditText mPasswordField;
 	ArrayList<ArrayList<String>> projects = new ArrayList();
 
-	private FirebaseAuth mAuth;
-	private FirebaseAuth.AuthStateListener mAuthListener;
-	FirebaseDatabase db = FirebaseDatabase.getInstance();
-	DatabaseReference ref = db.getReference();
+
+	FirebaseAuth.AuthStateListener mAuthListener;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		loginFalse();
 		setContentView(R.layout.activity_login);
 
 		// Views
@@ -62,43 +57,16 @@ public class LoginActivity extends BaseActivity {
 			}
 		});
 
-		ref.child("projects").addValueEventListener(new ValueEventListener() {
-			@Override
-			public void onDataChange(DataSnapshot dataSnapshot) {
-				for (DataSnapshot firstSnapshot : dataSnapshot.getChildren()) {
-					ArrayList<String> temp = new ArrayList();
-					temp.add(((HashMap<String, String>) firstSnapshot.getValue()).get("projectName"));
-					temp.add(((HashMap<String, String>) firstSnapshot.getValue()).get("projectDate"));
-					projects.add(temp);
-				}
-			}
-
-			@Override
-			public void onCancelled(DatabaseError databaseError) {
-				Log.w("Cancelled", "loadPost:onCancelled", databaseError.toException());
-			}
-		});
-
-		mAuth = FirebaseAuth.getInstance();
 		mAuthListener = new FirebaseAuth.AuthStateListener() {
 			@Override
 			public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-				FirebaseUser user = firebaseAuth.getCurrentUser();
+				FirebaseUser user = baseAuth.getCurrentUser();
 				if (user != null) {
 					// User is signed in
 					Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-					if (checked) {
-						Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
-						intent.putExtra("projects", projects);
-						startActivity(intent);
-					}
-					else {
-						Intent intent = new Intent(LoginActivity.this, Welcome.class);
-						startActivity(intent);
-					}
-				} else {
-					// User is signed out
-					Log.d(TAG, "onAuthStateChanged:signed_out");
+					Intent intent = new Intent(LoginActivity.this, LogintoMenuActivity.class);
+					startActivity(intent);
+
 				}
 			}
 		};
@@ -107,14 +75,14 @@ public class LoginActivity extends BaseActivity {
 	@Override
 	public void onStart() {
 		super.onStart();
-		mAuth.addAuthStateListener(mAuthListener);
+		baseAuth.addAuthStateListener(mAuthListener);
 	}
 
 	@Override
 	public void onStop() {
 		super.onStop();
 		if (mAuthListener != null) {
-			mAuth.removeAuthStateListener(mAuthListener);
+			baseAuth.removeAuthStateListener(mAuthListener);
 		}
 	}
 
@@ -127,7 +95,7 @@ public class LoginActivity extends BaseActivity {
 		showProgressDialog();
 
 		// [START create_user_with_email]
-		mAuth.createUserWithEmailAndPassword(email, password)
+		baseAuth.createUserWithEmailAndPassword(email, password)
 				.addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 					@Override
 					public void onComplete(@NonNull Task<AuthResult> task) {
@@ -158,7 +126,7 @@ public class LoginActivity extends BaseActivity {
 		showProgressDialog();
 
 		// [START sign_in_with_email]
-		mAuth.signInWithEmailAndPassword(email, password)
+		baseAuth.signInWithEmailAndPassword(email, password)
 				.addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 					@Override
 					public void onComplete(@NonNull Task<AuthResult> task) {
@@ -182,10 +150,6 @@ public class LoginActivity extends BaseActivity {
 					}
 				});
 		// [END sign_in_with_email]
-	}
-
-	private void signOut() {
-		mAuth.signOut();
 	}
 
 	private boolean validateForm() {

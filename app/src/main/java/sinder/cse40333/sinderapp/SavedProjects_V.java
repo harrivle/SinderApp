@@ -1,8 +1,6 @@
 package sinder.cse40333.sinderapp;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,7 +10,7 @@ import android.view.MenuItem;
  * Created by apple on 3/27/17.
  */
 
-public class SavedProjects_V extends AppCompatActivity {
+public class SavedProjects_V extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle bundle) {
@@ -45,7 +43,7 @@ public class SavedProjects_V extends AppCompatActivity {
 		} else if (res_id == R.id.close_v3a) {
 			//no code necessary here
 		} else if (res_id == R.id.returntowelcome_v3a) {
-			startActivity(new Intent(SavedProjects_V.this, LoginActivity.class));
+			signOut();
 		}
 
 		return true;

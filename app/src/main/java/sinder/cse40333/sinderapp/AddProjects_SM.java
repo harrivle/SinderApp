@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * Created by apple on 3/28/17.
  */
 
-public class AddProjects_SM extends AppCompatActivity {
+public class AddProjects_SM extends BaseActivity {
 	Button save_project;
 	EditText inputProjName;
 	EditText inputDate;

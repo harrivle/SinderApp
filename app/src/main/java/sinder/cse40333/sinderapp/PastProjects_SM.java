@@ -2,7 +2,6 @@ package sinder.cse40333.sinderapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,9 +14,9 @@ import java.util.ArrayList;
  * Created by apple on 3/27/17.
  */
 
-public class PastProjects_SM extends AppCompatActivity {
+public class PastProjects_SM extends BaseActivity {
 	ProjectsAdapter projectsAdapter;
-	Object projects;
+	ArrayList<ArrayList<String>> projects = new ArrayList();
 
 	@Override
 	protected void onCreate(Bundle bundle) {
@@ -27,18 +26,19 @@ public class PastProjects_SM extends AppCompatActivity {
 		setSupportActionBar(my_tool_bar_sm2);
 		my_tool_bar_sm2.setTitle("Past Projects");
 
-		projects = this.getIntent().getSerializableExtra("projects");
+
+		/*projects = this.getIntent().getSerializableExtra("projects");
 		for (ArrayList<String> i : (ArrayList<ArrayList<String>>) projects) {
 			for (String j : i) {
 				System.out.println("THIS");
 				System.out.println(j);
 			}
-		}
+		}*/
 
-		/*ArrayList<String> temp = new ArrayList();
+		ArrayList<String> temp = new ArrayList();
 		temp.add("Project 1");
 		temp.add("08/18/1995");
-		projects = temp;*/
+		projects.add(temp);
 		projectsAdapter = new ProjectsAdapter(this, (ArrayList) projects);
 		ListView scheduleListView = (ListView) findViewById(R.id.projectsList);
 		scheduleListView.setAdapter(projectsAdapter);
@@ -62,7 +62,7 @@ public class PastProjects_SM extends AppCompatActivity {
 		} else if (res_id == R.id.edit_profile_sm2) {
 			//??
 		} else if (res_id == R.id.logout_sm2) {
-			startActivity(new Intent(PastProjects_SM.this, LoginActivity.class));
+			signOut();
 		} else if (res_id == R.id.close_sm2) {
 			//no code necessary here
 		}

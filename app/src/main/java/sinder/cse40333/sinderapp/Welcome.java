@@ -17,7 +17,7 @@ import android.widget.Button;
  * Created by apple on 5/3/17.
  */
 
-public class Welcome extends AppCompatActivity {
+public class Welcome extends BaseActivity {
 	private FirebaseAuth mAuth;
 	private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -76,9 +76,7 @@ public class Welcome extends AppCompatActivity {
 		} else if (res_id == R.id.saved_projects_v2) {
 			startActivity(new Intent(Welcome.this, SavedProjects_V.class));
 		}	else if (res_id == R.id.logout_v2) {
-			mAuth.signOut();
-			Intent intent = new Intent(Welcome.this, LoginActivity.class);
-			startActivity(intent);
+			signOut();
 		} else if (res_id == R.id.close_v2) {
 			//no code necessary here
 		}
