@@ -9,4 +9,5 @@
 	<dimen name="field_width_standard">160dp</dimen>
 	<dimen name="title_font">36dp</dimen>
 	<dimen name="button_width">175dp</dimen>
+	<dimen name="image_size">150dp</dimen>
 </resources>

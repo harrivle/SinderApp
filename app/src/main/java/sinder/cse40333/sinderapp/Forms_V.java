@@ -38,6 +38,8 @@ public class Forms_V extends AppCompatActivity {
 		emailStringBuilder.append("Hello! Thank you for allowing me to participate in your community service project!" + "\n");
         emailStringBuilder.append("Attached is my service form." + "\n");
         emailStringBuilder.append("Thanks!" + "\n");
+
+		emailStringBuilder.append("\n" + "Download the Sinder App Today!" + "\n");
         //emailStringBuilder.append("-" + name);
 
 		String emailString = emailStringBuilder.toString();
@@ -65,7 +67,7 @@ public class Forms_V extends AppCompatActivity {
 			Intent shareIntent = new Intent();
 			shareIntent.setAction(android.content.Intent.ACTION_SEND);
 			shareIntent.setType("text/plain");
-			shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Service Form Request");
+			shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Sinder: Service Form Request");
 			shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareFunction());
 
 			shareIntent.putExtra(Intent.EXTRA_STREAM, uri);

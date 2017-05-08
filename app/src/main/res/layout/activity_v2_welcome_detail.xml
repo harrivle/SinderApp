@@ -1,7 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  android:orientation="vertical"
-			  android:layout_width="match_parent"
-			  android:layout_height="match_parent">
+<android.support.design.widget.CoordinatorLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:id="@+id/coordinatorlayout_sm2">
 
-</LinearLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		android:weightSum="1">
+
+		<include
+			android:id="@+id/toolbar_v2b_welcome_detail"
+			layout="@layout/toolbar_sm3" />
+
+		<ImageView
+			android:id="@+id/projPic2"
+			android:layout_width="wrap_content"
+			android:layout_height="200dp"
+			android:layout_gravity="center"
+			android:layout_marginTop="10dp"
+			android:layout_marginBottom="30dp"
+			android:layout_weight="0.19"
+			app:srcCompat="@drawable/leprechaun" />
+
+		<TableLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<TextView
+					android:id="@+id/projNameLabel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="15dp"
+					android:text="Name of Project"
+					android:textSize="20dp" />
+
+				<TextView
+					android:id="@+id/editProjName2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:inputType="text" />
+			</TableRow>
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/dateLabel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="15dp"
+					android:text="Date"
+					android:textSize="20dp" />
+
+				<TextView
+					android:id="@+id/editDate2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:inputType="date" />
+			</TableRow>
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/descriptionLabel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="15dp"
+					android:text="Description"
+					android:textSize="20dp" />
+
+				<TextView
+					android:id="@+id/editDescrip2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:inputType="textMultiLine" />
+			</TableRow>
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/contactInfoLabel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="15dp"
+					android:text="Contact Info"
+					android:textSize="20dp" />
+
+				<TextView
+					android:id="@+id/editConInfo2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:inputType="textEmailAddress" />
+			</TableRow>
+
+			<TableRow
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/numVolLabel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="15dp"
+					android:text="Numbers of Volunteers needed"
+					android:textSize="20dp" />
+
+				<TextView
+					android:id="@+id/editNumVol2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:inputType="number" />
+
+			</TableRow>
+		</TableLayout>
+
+
+		<Button
+			android:id="@+id/saved_projects_v2b"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:text="Save" />
+
+	</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
