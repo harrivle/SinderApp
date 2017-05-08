@@ -1,163 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:id="@+id/coordinatorlayout_3">
+	android:id="@+id/coordinatorlayout_v3b">
 
-	<LinearLayout
-		android:orientation="vertical"
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
-
-		<include
-			android:id="@+id/toolbar_v3a"
-			layout="@layout/toolbar_v3a"/>
-
-		<TableLayout
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+		<include android:id="@+id/toolbar" layout="@layout/toolbar_v3b"/>
+		<ListView
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:stretchColumns="2">
-
-			<TableRow>
-
-				<TextView
-					android:layout_column="1"
-					android:text="Picture"
-					android:gravity="right"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="2"
-					android:text="Project Name"
-					android:gravity="center"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="3"
-					android:text="Date"
-					android:gravity="right"
-					android:padding="3dip"/>
-			</TableRow>
-
-			<TableRow
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content">
-
-				<TextView
-					android:layout_column="1"
-					android:text="Yes"
-					android:gravity="right"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="2"
-					android:text="Project One"
-					android:gravity="center"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="3"
-					android:text="4/11/2017"
-					android:gravity="right"
-					android:padding="3dip"/>
-			</TableRow>
-
-			<TableRow
-				android:layout_width="match_parent"
-				android:layout_height="match_parent">
-
-				<TextView
-					android:layout_column="1"
-					android:text="No"
-					android:gravity="right"
-					android:padding="3dip"/>
-
-				<TextView
-
-					android:layout_column="2"
-					android:text="Project Two"
-					android:gravity="center"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="3"
-					android:text="4/1/2017"
-					android:gravity="right"
-					android:padding="3dip"/>
-			</TableRow>
-
-			<TableRow
-				android:layout_width="match_parent"
-				android:layout_height="match_parent">
-
-				<TextView
-					android:layout_column="1"
-					android:text="No"
-					android:gravity="right"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="2"
-					android:text="Project Three"
-					android:gravity="center"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="3"
-					android:text="3/23/2017"
-					android:gravity="right"
-					android:padding="3dip"/>
-			</TableRow>
-
-			<TableRow
-				android:layout_width="match_parent"
-				android:layout_height="match_parent">
-
-				<TextView
-					android:layout_column="1"
-					android:text="Yes"
-					android:gravity="right"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="2"
-					android:text="Project Four"
-					android:gravity="center"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="3"
-					android:text="3/5/2017"
-					android:gravity="right"
-					android:padding="3dip"/>
-			</TableRow>
-
-			<TableRow
-				android:layout_width="match_parent"
-				android:layout_height="match_parent">
-
-				<TextView
-					android:layout_column="1"
-					android:text="..."
-					android:gravity="right"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="2"
-					android:text="..."
-					android:gravity="center"
-					android:padding="3dip"/>
-
-				<TextView
-					android:layout_column="3"
-					android:text="..."
-					android:gravity="right"
-					android:padding="3dip"/>
-			</TableRow>
-		</TableLayout>
-
+			android:layout_height="match_parent"
+			android:id="@+id/saved_projectsListView" />
 
 	</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

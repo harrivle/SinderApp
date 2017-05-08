@@ -1,0 +1,12 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/share_v3a"
+        android:icon="@drawable/ic_email_black"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Email Moderator"/>
+
+
+</menu>
