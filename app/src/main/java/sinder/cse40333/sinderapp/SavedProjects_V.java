@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 /**
  * Created by apple on 3/27/17.
  */
@@ -45,6 +47,7 @@ public class SavedProjects_V extends AppCompatActivity {
 		} else if (res_id == R.id.close_v3a) {
 			//no code necessary here
 		} else if (res_id == R.id.returntowelcome_v3a) {
+			FirebaseAuth.getInstance().signOut();
 			startActivity(new Intent(SavedProjects_V.this, LoginActivity.class));
 		}
 

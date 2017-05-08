@@ -72,7 +72,9 @@ public class PastProjects_SM extends AppCompatActivity {
 		} else if (res_id == R.id.edit_profile_sm2) {
 			//??
 		} else if (res_id == R.id.logout_sm2) {
-			startActivity(new Intent(PastProjects_SM.this, LoginActivity.class));
+			mAuth.signOut();
+			Intent intent = new Intent(PastProjects_SM.this, LoginActivity.class);
+			startActivity(intent);
 		} else if (res_id == R.id.close_sm2) {
 			//no code necessary here
 		}

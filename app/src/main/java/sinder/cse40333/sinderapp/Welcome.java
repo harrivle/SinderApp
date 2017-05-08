@@ -78,10 +78,10 @@ public class Welcome extends AppCompatActivity {
 			startActivity(new Intent(Welcome.this, Forms_V.class));
 		} else if (res_id == R.id.saved_projects_v2) {
 			startActivity(new Intent(Welcome.this, SavedProjects_V.class));
-		}	else if (res_id == R.id.logout_v2) {
+		} else if (res_id == R.id.logout_v2) {
 			mAuth.signOut();
-			/*Intent intent = new Intent(Welcome.this, LoginActivity.class);
-			startActivity(intent);*/
+			Intent intent = new Intent(Welcome.this, LoginActivity.class);
+			startActivity(intent);
 		} else if (res_id == R.id.close_v2) {
 			//no code necessary here
 		}

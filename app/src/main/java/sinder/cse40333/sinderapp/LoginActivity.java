@@ -90,26 +90,15 @@ public class LoginActivity extends BaseActivity {
 				if (user != null) {
 					// User is signed in
 					Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-					ref.child("users").child(mAuth.getCurrentUser().getUid()).child("isSM").addListenerForSingleValueEvent(new ValueEventListener() {
-						@Override
-						public void onDataChange(DataSnapshot dataSnapshot) {
-							isSM = (Boolean) dataSnapshot.getValue();
-							if (isSM) {
-								Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
-								intent.putExtra("projects", projects);
-								startActivity(intent);
-							}
-							else {
-								Intent intent = new Intent(LoginActivity.this, Welcome.class);
-								startActivity(intent);
-							}
-						}
-
-						@Override
-						public void onCancelled(DatabaseError databaseError) {
-							Log.w("Cancelled", "loadPost:onCancelled", databaseError.toException());
-						}
-					});
+					if (isSM) {
+						Intent intent = new Intent(LoginActivity.this, PastProjects_SM.class);
+						intent.putExtra("projects", projects);
+						startActivity(intent);
+					}
+					else {
+						Intent intent = new Intent(LoginActivity.this, Welcome.class);
+						startActivity(intent);
+					}
 				} else {
 					// User is signed out
 					Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -118,6 +107,17 @@ public class LoginActivity extends BaseActivity {
 				}
 			}
 		};
+		ref.child("users").child(mAuth.getCurrentUser().getUid()).child("isSM").addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(DataSnapshot dataSnapshot) {
+				isSM = (Boolean) dataSnapshot.getValue();
+			}
+
+			@Override
+			public void onCancelled(DatabaseError databaseError) {
+				Log.w("Cancelled", "loadPost:onCancelled", databaseError.toException());
+			}
+		});
 	}
 
 	@Override
