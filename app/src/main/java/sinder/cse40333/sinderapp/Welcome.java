@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -29,10 +28,20 @@ public class Welcome extends AppCompatActivity {
 	GridView gridview;
 	static final int CAMERA_REQUEST = 1;
 
+	//database:
+	DatabaseHelper dbHelper;
+	int team_id;
+
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		setContentView(R.layout.activity_v2_welcome);
+
+
+		//database:
+		dbHelper = new DatabaseHelper(getApplicationContext());
+		Intent intent = getIntent();
+		team_id = intent.getExtras().getInt("id");
 
 		Toolbar my_tool_bar = (Toolbar) findViewById(R.id.toolbar_v2_welcome);
 		setSupportActionBar(my_tool_bar);

@@ -71,6 +71,8 @@ public class SavedProjects_V extends AppCompatActivity {
 				});
 				snackbar.show();
 
+
+
 				/*
 					//add code to delete project here!!!
 				 */
