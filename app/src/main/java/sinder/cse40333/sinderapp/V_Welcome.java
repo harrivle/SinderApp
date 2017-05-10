@@ -1,6 +1,7 @@
 package sinder.cse40333.sinderapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -8,15 +9,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.GridView;
 
 import com.google.firebase.database.DataSnapshot;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class V_Welcome extends BaseActivity {
-	ProjectsAdapter projectsAdapter;
+	GridAdapter projectsAdapter;
 	ArrayList<Project> projects;
+	ArrayList<File> images;
+	ArrayList<ArrayList<Object>> objects;
 
 	@Override
 	protected void onCreate(Bundle bundle) {
@@ -31,6 +35,8 @@ public class V_Welcome extends BaseActivity {
 	@Override
 	public void update(DataSnapshot data) {
 		projects = new ArrayList();
+		images = new ArrayList();
+		objects = new ArrayList();
 
 		for (DataSnapshot postData : data.child("projects").getChildren()) {
 			Iterable<DataSnapshot> tempData = data.child("users/" + baseAuth.getCurrentUser().getUid() + "/savedProjects").getChildren();
@@ -38,12 +44,19 @@ public class V_Welcome extends BaseActivity {
 				Project project = postData.getValue(Project.class);
 				project.setProjectID(Integer.parseInt(postData.getKey()));
 				projects.add(project);
+
+				File file = downloadFromStorage(project);
+				images.add(file);
+
+				ArrayList<Object> temp = new ArrayList();
+				temp.add(project);
+				temp.add(file);
 			}
 		}
 
-		projectsAdapter = new ProjectsAdapter(this, projects);
-		ListView scheduleListView = (ListView) findViewById(R.id.projectsList);
-		scheduleListView.setAdapter(projectsAdapter);
+		projectsAdapter = new GridAdapter(this, objects);
+		GridView projectsView = (GridView) findViewById(R.id.projects_grid);
+		projectsView.setAdapter(projectsAdapter);
 
 		//go to V_ProjectDetail if one of the items is clicked:
 		AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
@@ -55,7 +68,7 @@ public class V_Welcome extends BaseActivity {
 			}
 		};
 
-		scheduleListView.setOnItemClickListener(clickListener);
+		projectsView.setOnItemClickListener(clickListener);
 	}
 
 	public Boolean iterableContains(Iterable<DataSnapshot> i, String key) {
