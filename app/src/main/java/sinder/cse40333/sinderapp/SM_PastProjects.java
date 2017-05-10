@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -40,6 +42,17 @@ public class SM_PastProjects extends BaseActivity {
 		projectsAdapter = new ProjectsAdapter(this, (ArrayList) projects);
 		ListView scheduleListView = (ListView) findViewById(R.id.projectsList);
 		scheduleListView.setAdapter(projectsAdapter);
+
+		AdapterView.OnItemClickListener clickListener = new AdapterView.OnItemClickListener() {
+			//  @Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent myintent = new Intent(SM_PastProjects.this, V_ProjectDetail.class);
+				myintent.putExtra("project", projects.get(position));
+				startActivity(myintent);
+			}
+		};
+
+		scheduleListView.setOnItemClickListener(clickListener);
 	}
 
 	@Override
