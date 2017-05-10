@@ -146,6 +146,10 @@ public class BaseActivity extends AppCompatActivity {
 		dbRef.child("users/" + currentUID + "/savedProjects/" + project.getProjectID()).setValue(true);
 	}
 
+	public void updateProject(Project project) {
+		dbRef.child("projects/" + project.getProjectID()).setValue(project);
+	}
+
 	public void uploadToStorage(Uri fileURI, final Project project) {
 		final String imageLoc = "images/" + fileURI.getLastPathSegment();
 		UploadTask uploadTask = storageRef.child(imageLoc).putFile(fileURI);
@@ -170,13 +174,31 @@ public class BaseActivity extends AppCompatActivity {
 			@Override
 			public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 				project.setImageLoc(imageLoc);
+				updateProject(project);
 			}
 		});
 	}
 
-	public Uri downloadFromStorage(Project project) {
-		File localFile = null;
-		try {
+	public File downloadFromStorage(Project project) {
+		File rootPath = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+		StorageReference islandRef = storageRef.child(project.getImageLoc());
+		final File localFile = new File(rootPath, project.getImageName());
+
+		islandRef.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+			@Override
+			public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+				Log.e("firebase ","local file created" + localFile.toString());
+			}
+		}).addOnFailureListener(new OnFailureListener() {
+			@Override
+			public void onFailure(@NonNull Exception exception) {
+				Log.e("firebase ","local file not created " + exception.toString());
+			}
+		});
+
+		return localFile;
+
+		/*try {
 			String[] strarr = project.getImageName().split("\\.");
 			System.out.println(strarr[0]+strarr[1]);
 			localFile = File.createTempFile(strarr[0], "." + strarr[1], getExternalFilesDir(Environment.DIRECTORY_PICTURES));
@@ -200,6 +222,6 @@ public class BaseActivity extends AppCompatActivity {
 			return FileProvider.getUriForFile(this, "sinder.cse40333.sinderapp.fileprovider", localFile);
 		}
 
-		return null;
+		return null;*/
 	}
 }

@@ -80,21 +80,18 @@ public class V_ProjectDetail extends BaseActivity {
 
 	@Override
 	public void update(DataSnapshot data) {
-		imageURI = downloadFromStorage(project);
+		File imageFile = downloadFromStorage(project);
+		imageURI = Uri.fromFile(imageFile);
 		ImageView projectImage = (ImageView) findViewById(R.id.project_image);
 		projectImage.setImageURI(imageURI);
 	}
 
 	private File createImageFile() throws IOException {
-		// Create an image file name
-		String imageFileName = project.getProjectID() + project.getProjectName();
-		imageFileName.replaceAll("\\s+",""); // remove whitespace
-		File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-		File image = File.createTempFile(
-				imageFileName,  /* prefix */
-				".jpg",         /* suffix */
-				storageDir      /* directory */
-		);
+		File rootPath = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+		String imageFileName = project.getProjectID() + project.getProjectName() + ".jpg";
+		imageFileName = imageFileName.replaceAll("\\s+",""); // remove whitespace
+		System.out.println(imageFileName);
+		File image = new File(rootPath, imageFileName);
 
 		return image;
 	}
