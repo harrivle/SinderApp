@@ -43,6 +43,11 @@ public class V_Welcome extends BaseActivity {
 			if (!postData.getKey().equals("nextID") && !iterableContains(tempData, postData.getKey())) {
 				Project project = postData.getValue(Project.class);
 				project.setProjectID(Integer.parseInt(postData.getKey()));
+
+				String UID = (String) postData.child("ownerUID").getValue();
+				DataSnapshot nameData = data.child("users/" + UID + "/fullName");
+				project.setOwnerName((String) nameData.getValue());
+
 				projects.add(project);
 
 				File file = downloadFromStorage(project);

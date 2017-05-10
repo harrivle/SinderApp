@@ -123,28 +123,26 @@
 			</TableRow>
 		</TableLayout>
 
-		<android.support.design.widget.FloatingActionButton
-			android:id="@+id/camera"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:clickable="true"
-			android:onClick="cameraClick"
-			app:fabSize="mini"
-			app:srcCompat="@android:drawable/ic_input_add"/>
-
 		<ImageView
-			android:id="@+id/projPic"
-			android:layout_width="wrap_content"
-			android:layout_height="250dp"
+			android:id="@+id/project_image"
+			android:layout_width="200dp"
+			android:layout_height="200dp"
 			android:layout_gravity="center"
 			android:layout_weight="0.19"
-			app:srcCompat="@drawable/leprechaun"/>
+			app:srcCompat="@drawable/image_default"/>
+
+		<Button
+			android:id="@+id/camera_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal"
+			android:text="Take Photo"/>
 
 		<Button
 			android:id="@+id/saveProj"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
-			android:text="Save"/>
+			android:text="Post Project"/>
 	</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

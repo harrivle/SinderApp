@@ -139,7 +139,8 @@ public class BaseActivity extends AppCompatActivity {
 	public void addNewProject(Project project) {
 		project.setProjectID(projectIndex);
 		dbRef.child("projects/" + projectIndex).setValue(project);
-		dbRef.child("projects").child("nextID").setValue(projectIndex + 1);
+		dbRef.child("projects/" + projectIndex + "/ownerUID").setValue(baseAuth.getCurrentUser().getUid());
+		dbRef.child("projects/nextID").setValue(projectIndex + 1);
 	}
 
 	public void saveProject(Project project) {
@@ -197,31 +198,5 @@ public class BaseActivity extends AppCompatActivity {
 		});
 
 		return localFile;
-
-		/*try {
-			String[] strarr = project.getImageName().split("\\.");
-			System.out.println(strarr[0]+strarr[1]);
-			localFile = File.createTempFile(strarr[0], "." + strarr[1], getExternalFilesDir(Environment.DIRECTORY_PICTURES));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		if (localFile != null) {
-			storageRef.child(project.getImageLoc()).getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-				@Override
-				public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-					// success
-				}
-			}).addOnFailureListener(new OnFailureListener() {
-				@Override
-				public void onFailure(@NonNull Exception exception) {
-					exception.printStackTrace();
-				}
-			});
-
-			return FileProvider.getUriForFile(this, "sinder.cse40333.sinderapp.fileprovider", localFile);
-		}
-
-		return null;*/
 	}
 }

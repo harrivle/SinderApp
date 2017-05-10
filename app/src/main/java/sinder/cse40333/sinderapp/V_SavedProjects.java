@@ -36,6 +36,12 @@ public class V_SavedProjects extends BaseActivity {
 			if ((Boolean) postData.getValue()) {
 				Project project = tempData.getValue(Project.class);
 				project.setProjectID(Integer.parseInt(tempData.getKey()));
+
+				String UID = (String) postData.child("ownerUID").getValue();
+				DataSnapshot nameData = data.child("users/" + UID + "/fullName");
+				project.setOwnerName((String) nameData.getValue());
+
+
 				projects.add(project);
 			}
 		}

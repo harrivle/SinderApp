@@ -1,10 +1,12 @@
 package sinder.cse40333.sinderapp;
 
 import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
 
 import java.io.File;
 import java.io.Serializable;
 
+@IgnoreExtraProperties
 public class Project implements Serializable {
 	private String projectName;
 	private String projectDate;
@@ -12,11 +14,14 @@ public class Project implements Serializable {
 	private String contactInfo;
 	private String imageLoc;
 	private int numVolunteers;
+	private Boolean deleted = false;
 
 	@Exclude
 	private int projectID = -1;
 	@Exclude
 	private String imageName;
+	@Exclude
+	private String ownerName;
 
 	public Project() {
 		// required for FireBase
@@ -28,8 +33,8 @@ public class Project implements Serializable {
 		this.projectDesc = projectDesc;
 		this.contactInfo = contactInfo;
 		this.numVolunteers = numVolunteers;
-		imageLoc = "images/default.jpg";
-		imageName = "default.jpg";
+		imageLoc = "images/image_default.jpg";
+		imageName = "image_default.jpg";
 	}
 
 	@Exclude
@@ -40,6 +45,16 @@ public class Project implements Serializable {
 	@Exclude
 	public void setProjectID(int ID) {
 		projectID = ID;
+	}
+
+	@Exclude
+	public void setOwnerName(String name) {
+		ownerName = name;
+	}
+
+	@Exclude
+	public String getOwnerName() {
+		return ownerName;
 	}
 
 	public String getProjectName() {

@@ -17,10 +17,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class V_ProjectDetail extends BaseActivity {
-	final int CAMERA_REQUEST = 1;
-	private Uri imageURI;
-	private Uri cameraURI;
 	Project project;
+	Uri imageURI;
 
 	@Override
 	protected void onCreate(Bundle bundle) {
@@ -49,41 +47,9 @@ public class V_ProjectDetail extends BaseActivity {
 				}
 			};
 
-			View.OnClickListener cameraButtonListener = new View.OnClickListener() {
-				@Override
-				public void onClick(View view) {
-					Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-					if (cameraIntent.resolveActivity(getPackageManager()) != null) {
-						// Create the File where the photo should go
-						File imageFile = null;
-						try {
-							imageFile = createImageFile();
-						} catch (IOException ex) {
-							ex.printStackTrace();
-						}
-
-						if (imageFile != null) {
-							cameraURI = FileProvider.getUriForFile(V_ProjectDetail.this, "sinder.cse40333.sinderapp.fileprovider", imageFile);
-							cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, cameraURI);
-							startActivityForResult(cameraIntent, CAMERA_REQUEST);
-						}
-					}
-				}
-			};
-
 			Button signUpButton = (Button) findViewById(R.id.sign_up_button);
 			signUpButton.setOnClickListener(signUpButtonListener);
-			Button cameraButton = (Button) findViewById(R.id.camera_button);
-			cameraButton.setOnClickListener(cameraButtonListener);
 		}
-	}
-
-	@Override
-	public void update(DataSnapshot data) {
-		File imageFile = downloadFromStorage(project);
-		imageURI = Uri.fromFile(imageFile);
-		ImageView projectImage = (ImageView) findViewById(R.id.project_image);
-		projectImage.setImageURI(imageURI);
 	}
 
 	private File createImageFile() throws IOException {
@@ -97,10 +63,10 @@ public class V_ProjectDetail extends BaseActivity {
 	}
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// set image in activity_detail
-		if (resultCode == RESULT_OK && requestCode == CAMERA_REQUEST) {
-			uploadToStorage(cameraURI, project);
-		}
+	public void update(DataSnapshot data) {
+		File imageFile = downloadFromStorage(project);
+		imageURI = Uri.fromFile(imageFile);
+		ImageView projectImage = (ImageView) findViewById(R.id.project_image);
+		projectImage.setImageURI(imageURI);
 	}
 }

@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
-
 import java.util.ArrayList;
 
 public class SM_PastProjects extends BaseActivity {
@@ -32,10 +31,19 @@ public class SM_PastProjects extends BaseActivity {
 		projects = new ArrayList();
 
 		for (DataSnapshot postData : data.child("projects").getChildren()) {
+
 			if (!postData.getKey().equals("nextID")) {
-				Project project = postData.getValue(Project.class);
-				project.setProjectID(Integer.parseInt(postData.getKey()));
-				projects.add(project);
+				String UID = (String) postData.child("ownerUID").getValue();
+
+				if (UID != null && UID.equals(baseAuth.getCurrentUser().getUid())) {
+					Project project = postData.getValue(Project.class);
+					project.setProjectID(Integer.parseInt(postData.getKey()));
+
+					DataSnapshot nameData = data.child("users/" + UID + "/fullName");
+					project.setOwnerName((String) nameData.getValue());
+
+					projects.add(project);
+				}
 			}
 		}
 

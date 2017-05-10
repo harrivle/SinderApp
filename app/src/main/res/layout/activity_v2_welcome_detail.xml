@@ -21,10 +21,10 @@
 			android:layout_width="wrap_content"
 			android:layout_height="200dp"
 			android:layout_gravity="center"
-			android:layout_marginTop="10dp"
 			android:layout_marginBottom="30dp"
+			android:layout_marginTop="10dp"
 			android:layout_weight="0.19"
-			app:srcCompat="@drawable/leprechaun" />
+			app:srcCompat="@drawable/image_default"/>
 
 		<TableLayout
 			android:layout_width="wrap_content"
@@ -156,11 +156,6 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="Save" />
-				<Button
-					android:id="@+id/camera_button"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="Camera"/>
 			</TableRow>
 		</TableLayout>
 
