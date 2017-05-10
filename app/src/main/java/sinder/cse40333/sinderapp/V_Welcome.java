@@ -51,6 +51,7 @@ public class V_Welcome extends BaseActivity {
 				ArrayList<Object> temp = new ArrayList();
 				temp.add(project);
 				temp.add(file);
+				objects.add(temp);
 			}
 		}
 

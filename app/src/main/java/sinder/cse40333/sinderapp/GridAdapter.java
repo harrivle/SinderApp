@@ -18,12 +18,14 @@ public class GridAdapter extends ArrayAdapter<ArrayList<Object>> {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater scheduleInflater = LayoutInflater.from(getContext());
-		View projectView = scheduleInflater.inflate(R.layout.image_layout, parent, false);
+		LayoutInflater itemInflater = LayoutInflater.from(getContext());
+		View projectView = itemInflater.inflate(R.layout.image_layout, parent, false);
 		ArrayList<Object> objects = getItem(position);
 		File imageFile = (File) objects.get(1);
 		Uri imageURI = Uri.fromFile(imageFile);
 		Project item = (Project) objects.get(0);
+
+		System.out.println(item.getProjectName());
 
 		TextView projectName = (TextView) projectView.findViewById(R.id.project_name);
 		projectName.setText(item.getProjectName());

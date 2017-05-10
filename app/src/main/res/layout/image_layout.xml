@@ -6,12 +6,11 @@
 			  android:layout_gravity="center">
 
 	<ImageView
-		android:layout_width="60dp"
-		android:layout_height="60dp"
-		app:srcCompat="@drawable/sinder_logo"
 		android:id="@+id/project_image"
-		android:paddingBottom="@dimen/activity_horizontal_margin"
-		android:layout_gravity="center|center_horizontal"/>
+		android:layout_width="128dp"
+		android:layout_height="128dp"
+		android:layout_gravity="center|center_horizontal"
+		app:srcCompat="@drawable/sinder_logo"/>
 
 	<TextView
 		android:id="@+id/project_name"
