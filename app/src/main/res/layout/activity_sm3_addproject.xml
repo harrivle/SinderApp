@@ -30,6 +30,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="Name of Project"
+					android:padding="10dip"
 					android:textSize="20sp"/>
 
 				<EditText
@@ -49,6 +50,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="Date"
+					android:padding="10dip"
 					android:textSize="15sp"/>
 
 				<EditText
@@ -68,6 +70,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="Description"
+					android:padding="10dip"
 					android:textSize="15sp"/>
 
 				<EditText
@@ -87,6 +90,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="Contact Info"
+					android:padding="10dip"
 					android:textSize="15sp"/>
 
 				<EditText
@@ -106,7 +110,8 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="Numbers of Volunteers needed"
-					android:textSize="15sp"/>
+					android:padding="10dip"
+				android:textSize="15sp"/>
 
 				<EditText
 					android:id="@+id/editNumVol"
@@ -130,7 +135,7 @@
 		<ImageView
 			android:id="@+id/projPic"
 			android:layout_width="wrap_content"
-			android:layout_height="200dp"
+			android:layout_height="250dp"
 			android:layout_gravity="center"
 			android:layout_weight="0.19"
 			app:srcCompat="@drawable/leprechaun"/>
@@ -141,13 +146,5 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="center_horizontal"
 			android:text="Save"/>
-
-		<Button
-			android:id="@+id/createProjectButton"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:onClick="writeNewProject"
-			android:text="Create Project"/>
-
 	</LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
