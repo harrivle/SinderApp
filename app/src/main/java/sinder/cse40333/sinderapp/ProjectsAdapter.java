@@ -20,11 +20,11 @@ public class ProjectsAdapter extends ArrayAdapter<Project> {
 		View projectView = scheduleInflater.inflate(R.layout.project_row, parent, false);
 		Project item = getItem(position);
 
-		TextView teamName = (TextView) projectView.findViewById(R.id.projectName);
-		teamName.setText(item.getProjectName());
+		TextView projectName = (TextView) projectView.findViewById(R.id.projectName);
+		projectName.setText(item.getProjectName());
 
-		TextView gameDate = (TextView) projectView.findViewById(R.id.projectDate);
-		gameDate.setText(item.getProjectDate());
+		TextView projectDate = (TextView) projectView.findViewById(R.id.projectDate);
+		projectDate.setText(item.getProjectDate());
 
 		return projectView;
 	}
