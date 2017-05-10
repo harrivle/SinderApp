@@ -15,17 +15,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import java.util.ArrayList;
+
 public class LoginActivity extends BaseActivity {
 	private static final String TAG = "EmailPassword";
 	boolean checked = false;
-
+	ArrayList<ArrayList<String>> projects = new ArrayList();
+	FirebaseAuth.AuthStateListener mAuthListener;
 	private EditText mEmailField;
 	private EditText mPasswordField;
-	ArrayList<ArrayList<String>> projects = new ArrayList();
-
-
-	FirebaseAuth.AuthStateListener mAuthListener;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -101,6 +100,9 @@ public class LoginActivity extends BaseActivity {
 						if (!task.isSuccessful()) {
 							Toast.makeText(LoginActivity.this, R.string.auth_failed,
 									Toast.LENGTH_SHORT).show();
+						} else {
+							FirebaseUser currentUser = baseAuth.getCurrentUser();
+							dbRef.child("users").child(currentUser.getUid()).child("isSM").setValue(checked);
 						}
 
 						// [START_EXCLUDE]
@@ -136,10 +138,10 @@ public class LoginActivity extends BaseActivity {
 						}
 
 						// [START_EXCLUDE]
-					//	if (!task.isSuccessful()) {
-					//		mStatusTextView.setText(R.string.auth_failed);
-					//	}
-					//	hideProgressDialog();
+						//	if (!task.isSuccessful()) {
+						//		mStatusTextView.setText(R.string.auth_failed);
+						//	}
+						//	hideProgressDialog();
 						// [END_EXCLUDE]
 					}
 				});
@@ -169,10 +171,9 @@ public class LoginActivity extends BaseActivity {
 	}
 
 	public void itemClicked(View v) {
-		if(((CheckBox) v).isChecked()) {
+		if (((CheckBox) v).isChecked()) {
 			checked = true;
-		}
-		else {
+		} else {
 			checked = false;
 		}
 	}

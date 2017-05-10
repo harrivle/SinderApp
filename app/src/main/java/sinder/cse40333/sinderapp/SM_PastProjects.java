@@ -8,15 +8,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+
 import java.util.ArrayList;
 
-/**
- * Created by apple on 3/27/17.
- */
-
-public class PastProjects_SM extends BaseActivity {
+public class SM_PastProjects extends BaseActivity {
 	ProjectsAdapter projectsAdapter;
-	ArrayList<ArrayList<String>> projects = new ArrayList();
+	ArrayList<Project> projects;
 
 	@Override
 	protected void onCreate(Bundle bundle) {
@@ -25,20 +23,20 @@ public class PastProjects_SM extends BaseActivity {
 		Toolbar my_tool_bar_sm2 = (Toolbar) findViewById(R.id.toolbar_sm2);
 		setSupportActionBar(my_tool_bar_sm2);
 		my_tool_bar_sm2.setTitle("Past Projects");
+	}
 
+	@Override
+	public void update(DataSnapshot data) {
+		projects = new ArrayList();
 
-		/*projects = this.getIntent().getSerializableExtra("projects");
-		for (ArrayList<String> i : (ArrayList<ArrayList<String>>) projects) {
-			for (String j : i) {
-				System.out.println("THIS");
-				System.out.println(j);
+		for (DataSnapshot postData : data.child("projects").getChildren()) {
+			if (!postData.getKey().equals("nextID")) {
+				Project project = postData.getValue(Project.class);
+				project.setProjectID(Integer.parseInt(postData.getKey()));
+				projects.add(project);
 			}
-		}*/
+		}
 
-		ArrayList<String> temp = new ArrayList();
-		temp.add("Project 1");
-		temp.add("08/18/1995");
-		projects.add(temp);
 		projectsAdapter = new ProjectsAdapter(this, (ArrayList) projects);
 		ListView scheduleListView = (ListView) findViewById(R.id.projectsList);
 		scheduleListView.setAdapter(projectsAdapter);
@@ -56,7 +54,7 @@ public class PastProjects_SM extends BaseActivity {
 		int res_id = item.getItemId();
 
 		if (res_id == R.id.add_sm2) {
-			startActivity(new Intent(PastProjects_SM.this, AddProjects_SM.class));
+			startActivity(new Intent(SM_PastProjects.this, SM_AddProject.class));
 		} else if (res_id == R.id.delete_sm2) {
 			//??
 		} else if (res_id == R.id.edit_profile_sm2) {

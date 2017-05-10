@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  xmlns:app="http://schemas.android.com/apk/res-auto"
-			  android:orientation="vertical" android:layout_width="match_parent"
-			  android:layout_height="match_parent">
+			  android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:orientation="vertical">
 
 	<TextView
 		android:id="@+id/splashTitle"
@@ -12,14 +13,14 @@
 		android:layout_marginTop="80dp"
 		android:text="Sinder"
 		android:textSize="48sp"
-		android:theme="@style/ThemeOverlay.MyTitleText" />
+		android:theme="@style/ThemeOverlay.MyTitleText"/>
 
 	<ImageView
 		android:id="@+id/imageView"
 		android:layout_width="match_parent"
 		android:layout_height="300dp"
 		android:layout_marginTop="0dp"
-		app:srcCompat="@drawable/sinder_logo" />
+		app:srcCompat="@drawable/sinder_logo"/>
 
 	<TextView
 		android:id="@+id/splashText"
@@ -28,5 +29,5 @@
 		android:layout_marginBottom="@dimen/title_bottom_margin"
 		android:text="Ignite Your Passion For Service"
 		android:textSize="26sp"
-		android:theme="@style/ThemeOverlay.MyTitleText" />
+		android:theme="@style/ThemeOverlay.MyTitleText"/>
 </LinearLayout>

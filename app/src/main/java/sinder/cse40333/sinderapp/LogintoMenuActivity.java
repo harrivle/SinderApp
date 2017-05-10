@@ -16,21 +16,23 @@ public class LogintoMenuActivity extends BaseActivity {
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		System.out.println("LogintoMenu");
-		ref.child("users").child(baseAuth.getCurrentUser().getUid()).child("isSM").addListenerForSingleValueEvent(new ValueEventListener() {
+		dbRef.child("users").child(baseAuth.getCurrentUser().getUid()).child("isSM").addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(DataSnapshot dataSnapshot) {
-				if ((Boolean) dataSnapshot.getValue()) {
-					Intent intent = new Intent(LogintoMenuActivity.this, PastProjects_SM.class);
-					startActivity(intent);
-				} else {
-					Intent intent = new Intent(LogintoMenuActivity.this, Welcome.class);
-					startActivity(intent);
+				if (dataSnapshot.getValue() != null) {
+					if ((Boolean) dataSnapshot.getValue()) {
+						Intent intent = new Intent(LogintoMenuActivity.this, SM_PastProjects.class);
+						startActivity(intent);
+					} else {
+						Intent intent = new Intent(LogintoMenuActivity.this, V_Welcome.class);
+						startActivity(intent);
+					}
 				}
 			}
 
 			@Override
 			public void onCancelled(DatabaseError databaseError) {
-
+				System.out.println("FireBase Error: " + databaseError.getCode());
 			}
 		});
 	}

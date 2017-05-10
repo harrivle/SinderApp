@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 		  package="sinder.cse40333.sinderapp">
 
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+	<uses-feature
+		android:name="android.hardware.camera"
+		android:required="true"/>
+
 	<application
 		android:allowBackup="true"
 		android:icon="@drawable/sinder_logo"
@@ -9,6 +15,17 @@
 		android:roundIcon="@drawable/sinder_logo"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
+
+		<provider
+			android:name="android.support.v4.content.FileProvider"
+			android:authorities="sinder.cse40333.sinderapp.fileprovider"
+			android:exported="false"
+			android:grantUriPermissions="true">
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/paths"></meta-data>
+		</provider>
+
 		<activity
 			android:name=".LaunchActivity"
 			android:label="@string/app_name">
@@ -18,15 +35,15 @@
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
-		<activity android:name=".Welcome"></activity>
-		<activity android:name=".Welcome_Detail"></activity>
-		<activity android:name=".Forms_V"></activity>
-		<activity android:name=".SavedProjects_V"></activity>
-		<activity android:name=".PastProjects_SM"></activity>
-		<activity android:name=".AddProjects_SM"></activity>
-		<activity android:name = ".LoginActivity"></activity>
-		<activity android:name = ".LogintoMenuActivity"></activity>
-		<activity android:name = ".BaseActivity"></activity>
+		<activity android:name=".V_Welcome"></activity>
+		<activity android:name=".V_ProjectDetail"></activity>
+		<activity android:name=".V_Forms"></activity>
+		<activity android:name=".V_SavedProjects"></activity>
+		<activity android:name=".SM_PastProjects"></activity>
+		<activity android:name=".SM_AddProject"></activity>
+		<activity android:name=".LoginActivity"></activity>
+		<activity android:name=".LogintoMenuActivity"></activity>
+		<activity android:name=".BaseActivity"></activity>
 	</application>
 
 </manifest>

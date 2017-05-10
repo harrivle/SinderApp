@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/coordinatorlayout_sm2"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:id="@+id/coordinatorlayout_sm2">
+	android:layout_height="match_parent">
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				  android:orientation="vertical"
 				  android:layout_width="match_parent"
-				  android:layout_height="match_parent">
+				  android:layout_height="match_parent"
+				  android:orientation="vertical">
 
 		<include
 			android:id="@+id/toolbar_sm2"
@@ -32,9 +32,9 @@
 
 				<TextView
 					android:layout_column="3"
-					android:text="Date"
 					android:gravity="right"
-					android:padding="3dip"/>
+					android:padding="3dip"
+					android:text="Date"/>
 			</TableRow>
 
 		</TableLayout>

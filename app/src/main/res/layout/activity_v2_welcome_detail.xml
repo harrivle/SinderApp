@@ -1,7 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			  android:orientation="vertical"
-			  android:layout_width="match_parent"
-			  android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				xmlns:app="http://schemas.android.com/apk/res-auto"
+				android:layout_width="match_parent"
+			  android:layout_height="match_parent"
+			  android:orientation="vertical">
 
-</LinearLayout>
+	<TextView
+		android:id="@+id/project_name"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="59dp"
+		android:text="TextView"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"/>
+
+	<TextView
+		android:id="@+id/project_date"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="140dp"
+		android:text="TextView"
+		android:layout_below="@+id/project_name"
+		android:layout_alignLeft="@+id/project_name"
+		android:layout_alignStart="@+id/project_name"/>
+
+	<TextView
+		android:id="@+id/contact_info"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="TextView"
+		android:layout_centerVertical="true"
+		android:layout_alignLeft="@+id/project_date"
+		android:layout_alignStart="@+id/project_date"
+		android:layout_alignRight="@+id/project_date"
+		android:layout_alignEnd="@+id/project_date"/>
+
+	<TextView
+		android:id="@+id/project_desc"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="TextView"
+		android:layout_below="@+id/project_date"
+		android:layout_alignLeft="@+id/contact_info"
+		android:layout_alignStart="@+id/contact_info"
+		android:layout_marginTop="17dp"/>
+
+	<TextView
+		android:id="@+id/num_vol"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="26dp"
+		android:text="TextView"
+		android:layout_below="@+id/contact_info"
+		android:layout_alignLeft="@+id/contact_info"
+		android:layout_alignStart="@+id/contact_info"/>
+
+	<Button
+		android:id="@+id/sign_up_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="36dp"
+		android:text="Sign Up!"
+		android:layout_below="@+id/num_vol"
+		android:layout_centerHorizontal="true"/>
+
+	<Button
+		android:id="@+id/camera_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/sign_up_button"
+		android:layout_alignStart="@+id/sign_up_button"
+		android:layout_below="@+id/sign_up_button"
+		android:layout_marginTop="16dp"
+		android:text="Camera"/>
+
+	<ImageView
+		android:id="@+id/project_image"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/project_desc"
+		android:layout_centerHorizontal="true"
+		android:layout_marginBottom="17dp"
+		app:srcCompat="@drawable/empty"/>
+</RelativeLayout>
