@@ -3,17 +3,12 @@ package sinder.cse40333.sinderapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-/**
- * Created by apple on 3/27/17.
- */
-
-public class Forms_V extends AppCompatActivity {
+public class V_Forms extends BaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +31,12 @@ public class Forms_V extends AppCompatActivity {
 		StringBuilder emailStringBuilder = new StringBuilder(20);
 
 		emailStringBuilder.append("Hello! Thank you for allowing me to participate in your community service project!" + "\n");
-        emailStringBuilder.append("Attached is my service form." + "\n");
-        emailStringBuilder.append("Thanks!" + "\n");
-        //emailStringBuilder.append("-" + name);
+		emailStringBuilder.append("Attached is my service form." + "\n");
+		emailStringBuilder.append("Thanks!" + "\n");
+		//emailStringBuilder.append("-" + name);
 
 		String emailString = emailStringBuilder.toString();
-        return emailString;
+		return emailString;
 	}
 
 	@Override
@@ -60,7 +55,7 @@ public class Forms_V extends AppCompatActivity {
 		} else if (res_id == R.id.returntowelcome_v3a) {
 			startActivity(new Intent(this, LoginActivity.class));
 		} else if (res_id == R.id.share_v3a) {
-			Uri uri=Uri.parse("android.resource://"+getPackageName()+"/drawable/"+"sinder_logo");
+			Uri uri = Uri.parse("android.resource://" + getPackageName() + "/drawable/" + "sinder_logo");
 
 			Intent shareIntent = new Intent();
 			shareIntent.setAction(android.content.Intent.ACTION_SEND);

@@ -2,15 +2,15 @@
 <android.support.design.widget.CoordinatorLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/coordinatorlayout_sm2"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:id="@+id/coordinatorlayout_sm2">
+	android:layout_height="match_parent">
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 				  xmlns:app="http://schemas.android.com/apk/res-auto"
-				  android:orientation="vertical"
 				  android:layout_width="match_parent"
 				  android:layout_height="match_parent"
+				  android:orientation="vertical"
 				  android:weightSum="1">
 
 		<include
@@ -23,124 +23,124 @@
 
 			<TableRow
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" >
+				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/projName"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
 					android:text="Name of Project"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:textSize="20sp"
-					android:id="@+id/projName" />
+					android:textSize="20sp"/>
 
 				<EditText
+					android:id="@+id/editProjName"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:inputType="text"
 					android:ems="10"
-					android:id="@+id/editProjName" />
+					android:inputType="text"/>
 			</TableRow>
 
 			<TableRow
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" >
+				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/date"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
 					android:text="Date"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:textSize="15sp"
-					android:id="@+id/date" />
+					android:textSize="15sp"/>
 
 				<EditText
+					android:id="@+id/editDate"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:inputType="date"
 					android:ems="10"
-					android:id="@+id/editDate" />
+					android:inputType="date"/>
 			</TableRow>
 
 			<TableRow
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" >
+				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/discription"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
 					android:text="Description"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:textSize="15sp"
-					android:id="@+id/discription" />
+					android:textSize="15sp"/>
 
 				<EditText
+					android:id="@+id/editDescrip"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:inputType="textMultiLine"
 					android:ems="10"
-					android:id="@+id/editDescrip" />
+					android:inputType="textMultiLine"/>
 			</TableRow>
 
 			<TableRow
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" >
+				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/contactInfo"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
 					android:text="Contact Info"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:textSize="15sp"
-					android:id="@+id/contactInfo" />
+					android:textSize="15sp"/>
 
 				<EditText
+					android:id="@+id/editConInfo"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:inputType="textEmailAddress"
 					android:ems="10"
-					android:id="@+id/editConInfo" />
+					android:inputType="textEmailAddress"/>
 			</TableRow>
 
 			<TableRow
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" >
+				android:layout_height="wrap_content">
 
 				<TextView
-					android:text="Numbers of Volunteers needed"
+					android:id="@+id/numVol"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:textSize="15sp"
-					android:id="@+id/numVol" />
+					android:text="Numbers of Volunteers needed"
+					android:textSize="15sp"/>
 
 				<EditText
+					android:id="@+id/editNumVol"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:inputType="number"
 					android:ems="10"
-					android:id="@+id/editNumVol" />
+					android:inputType="number"/>
 
 			</TableRow>
 		</TableLayout>
 
 		<android.support.design.widget.FloatingActionButton
+			android:id="@+id/camera"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:clickable="true"
+			android:onClick="cameraClick"
 			app:fabSize="mini"
-			app:srcCompat="@android:drawable/ic_input_add"
-			android:id="@+id/camera"
-			android:onClick="cameraClick"/>
+			app:srcCompat="@android:drawable/ic_input_add"/>
 
 		<ImageView
+			android:id="@+id/projPic"
 			android:layout_width="wrap_content"
 			android:layout_height="200dp"
-			app:srcCompat="@drawable/leprechaun"
 			android:layout_gravity="center"
-			android:id="@+id/projPic"
-			android:layout_weight="0.19" />
+			android:layout_weight="0.19"
+			app:srcCompat="@drawable/leprechaun"/>
 
 		<Button
-			android:text="Save"
+			android:id="@+id/saveProj"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:id="@+id/saveProj"
-			android:layout_gravity="center_horizontal" />
+			android:layout_gravity="center_horizontal"
+			android:text="Save"/>
 
 		<Button
 			android:id="@+id/createProjectButton"

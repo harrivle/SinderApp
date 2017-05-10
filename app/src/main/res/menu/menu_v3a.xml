@@ -1,46 +1,46 @@
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-	  xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<item
 		android:id="@+id/add_v3a"
 		android:icon="@drawable/ic_add_circle"
 		android:orderInCategory="100"
-		app:showAsAction="always"
-		android:title="Add Form"/>
+		android:title="Add Form"
+		app:showAsAction="always"/>
 
 	<item
 		android:id="@+id/delete_v3a"
 		android:icon="@drawable/ic_delete"
 		android:orderInCategory="100"
-		app:showAsAction="ifRoom"
-		android:title="Delete"/>
+		android:title="Delete"
+		app:showAsAction="ifRoom"/>
 
 	<item
 		android:id="@+id/edit_v3a"
 		android:icon="@drawable/ic_edit"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Edit"/>
+		android:title="Edit"
+		app:showAsAction="never"/>
 
 	<item
 		android:id="@+id/returntowelcome_v3a"
 		android:icon="@drawable/ic_close"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Return To Main Menu"/>
+		android:title="Return To Main Menu"
+		app:showAsAction="never"/>
 
 	<item
 		android:id="@+id/close_v3a"
 		android:icon="@drawable/ic_close"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Close"/>
+		android:title="Close"
+		app:showAsAction="never"/>
 
 	<item
 		android:id="@+id/share_v3a"
 		android:icon="@drawable/ic_email_black"
 		android:orderInCategory="100"
-		app:showAsAction="always"
-		android:title="Share"/>
+		android:title="Share"
+		app:showAsAction="always"/>
 
 </menu>

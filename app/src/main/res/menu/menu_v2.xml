@@ -1,28 +1,28 @@
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-	  xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<item
 		android:id="@+id/forms_v2"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Forms"/>
+		android:title="Forms"
+		app:showAsAction="never"/>
 
 	<item
 		android:id="@+id/saved_projects_v2"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Saved Projects"/>
+		android:title="Saved Projects"
+		app:showAsAction="never"/>
 
 	<item
 		android:id="@+id/logout_v2"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Logout"/>
+		android:title="Logout"
+		app:showAsAction="never"/>
 
 	<item
 		android:id="@+id/close_v2"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Close"/>
+		android:title="Close"
+		app:showAsAction="never"/>
 
 </menu>

@@ -13,7 +13,7 @@ public class LaunchActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_splash_screen);
-		Thread myThread = new Thread(){
+		Thread myThread = new Thread() {
 			@Override
 			public void run() {
 				try {

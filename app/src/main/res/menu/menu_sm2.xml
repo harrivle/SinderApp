@@ -1,40 +1,40 @@
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-	  xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<item
 		android:id="@+id/add_sm2"
 		android:icon="@drawable/ic_add_circle"
 		android:orderInCategory="100"
-		app:showAsAction="always"
-		android:title="Add Form"/>
+		android:title="Add Form"
+		app:showAsAction="always"/>
 
 	<item
 		android:id="@+id/delete_sm2"
 		android:icon="@drawable/ic_remove"
 		android:orderInCategory="100"
-		app:showAsAction="always"
-		android:title="Delete"/>
+		android:title="Delete"
+		app:showAsAction="always"/>
 
 	<item
 		android:id="@+id/edit_profile_sm2"
 		android:icon="@drawable/ic_edit"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Edit Profile"/>
+		android:title="Edit Profile"
+		app:showAsAction="never"/>
 
 	<item
 		android:id="@+id/logout_sm2"
 		android:icon="@drawable/ic_close"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Log Out"/>
+		android:title="Log Out"
+		app:showAsAction="never"/>
 
 	<item
 		android:id="@+id/close_sm2"
 		android:icon="@drawable/ic_close"
 		android:orderInCategory="100"
-		app:showAsAction="never"
-		android:title="Close"/>
+		android:title="Close"
+		app:showAsAction="never"/>
 
 
 </menu>

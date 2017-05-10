@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/coordinatorlayout"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:id="@+id/coordinatorlayout">
+	android:layout_height="match_parent">
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -13,16 +12,16 @@
 
 		<include
 			android:id="@+id/toolbar_v2_welcome"
-			layout="@layout/toolbar_v2_welcome" />
+			layout="@layout/toolbar_v2_welcome"/>
 
 		<TextView
 			android:id="@+id/textView"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Welcome!"
 			android:layout_marginBottom="25dp"
+			android:text="Welcome!"
 			android:textAlignment="center"
-			android:textSize="@dimen/title_font" />
+			android:textSize="@dimen/title_font"/>
 
 		<TableLayout
 			android:layout_width="match_parent"
@@ -38,13 +37,13 @@
 					android:layout_column="1"
 					android:gravity="center"
 					android:padding="3dip"
-					android:text="Project Name" />
+					android:text="Project Name"/>
 
 				<TextView
 					android:layout_column="3"
 					android:gravity="right"
 					android:padding="3dip"
-					android:text="Date" />
+					android:text="Date"/>
 			</TableRow>
 
 
@@ -53,7 +52,7 @@
 		<ListView
 			android:id="@+id/projectsList"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent" />
+			android:layout_height="match_parent"/>
 
 
 	</LinearLayout>
